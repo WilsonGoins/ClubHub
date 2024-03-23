@@ -1,39 +1,48 @@
-import React from "react"
-import "./LogIn.css"
-import PlazaOfTheAmericas from "./PlazaOfTheAmericas.png"
-import Navbar from "../Navbar/Navbar"
-import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import React, { useState } from "react";
+import "./LogIn.css";
+import PlazaOfTheAmericas from "./PlazaOfTheAmericas.png";
+import Navbar from "../Navbar/Navbar";
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebase';
+import { useNavigate } from "react-router-dom";
 
 const LogIn = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
-    const LogIn = () => {
-        if (ValidateStuff()) {
-            console.log(email, password, " are good!");
-            navigate("/home");
-        }
-        else {
-            console.log("bad");
-        }
-    }
+    const handleLogIn = (event) => {
+        event.preventDefault();
 
-    const ValidateStuff = () => {
+        if (validateInput()) {
+            signInWithEmailAndPassword(auth, email, password)
+                .then(() => {
+                    // Navigate to home page after successful login
+                    navigate("/home");
+                })
+                .catch(error => {
+                    // Handle login errors
+                    console.error("Error signing in:", error.message);
+                });
+        }
+    };
+
+    const validateInput = () => {
         const emailRegex = /^\S+@ufl\.edu$/;
         const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*()-_+=])[A-Za-z\d!@#$%^&*()-_+=]{8,20}$/;
 
         if (!emailRegex.test(email)) {
+            console.error("Invalid email format");
             return false;
         }
 
         if (!passwordRegex.test(password)) {
+            console.error("Invalid password format");
             return false;
         }
 
         return true;
-    }
+    };
 
     return (
         <div>
@@ -41,49 +50,49 @@ const LogIn = () => {
                 <img src={PlazaOfTheAmericas} alt="Plaza of the Americas - UF" className="LI-bg-img" />
             </div>
 
-            <Navbar/>
+            <Navbar />
 
             <div className="LI-title-container">
                 <div className="LI-title-text">
-                Please Log Into Your Account
-                </div>"
+                    Please Log Into Your Account
+                </div>
             </div>
 
-            <form onSubmit={LogIn}>
+            <form onSubmit={handleLogIn}>
 
                 {/* email */}
-                <div class="row g-3 align-items-center" className="LI-email-box">
-                    <div class="col-auto">
-                        <input type="text" placeholder="Email" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline"
-                        onChange={(event) => setEmail(event.target.value)}
-                        value={email}
+                <div className="row g-3 align-items-center LI-email-box">
+                    <div className="col-auto">
+                        <input type="text" placeholder="Email" className="form-control" aria-describedby="emailHelp"
+                               onChange={(event) => setEmail(event.target.value)}
+                               value={email}
                         />
                     </div>
-                    <div class="col-auto">
-                        <span id="passwordHelpInline" class="form-text" style={{color: '#FFFFFF'}}>
-                        Emails must end in '@ufl.edu'
+                    <div className="col-auto">
+                        <span id="emailHelp" className="form-text" style={{ color: '#FFFFFF' }}>
+                            Emails must end in '@ufl.edu'
                         </span>
                     </div>
                 </div>
 
                 {/* password */}
-                <div class="row g-3 align-items-center" className="LI-password-box">
-                    <div class="col-auto">
-                        <input type="password" placeholder="Password" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline"
-                        onChange={(event) => setPassword(event.target.value)}
-                        value={password}
+                <div className="row g-3 align-items-center LI-password-box">
+                    <div className="col-auto">
+                        <input type="password" placeholder="Password" className="form-control" aria-describedby="passwordHelp"
+                               onChange={(event) => setPassword(event.target.value)}
+                               value={password}
                         />
                     </div>
-                    <div class="col-auto">
-                        <span id="passwordHelpInline" class="form-text" style={{color: '#FFFFFF'}}>
-                        Passwords must be 8-20 characters long and include at least one symbol, letter, and number
+                    <div className="col-auto">
+                        <span id="passwordHelp" className="form-text" style={{ color: '#FFFFFF' }}>
+                            Passwords must be 8-20 characters long and include at least one symbol, letter, and number
                         </span>
                     </div>
                 </div>
-    
+
                 {/* login button */}
                 <div>
-                    <button type="button" class="btn btn-lg NVB-bg-color LI-login-btn" onClick={LogIn}>Log In</button>
+                    <button type="submit" className="btn btn-lg NVB-bg-color LI-login-btn">Log In</button>
                 </div>
             </form>
 
@@ -91,4 +100,4 @@ const LogIn = () => {
     )
 }
 
-export default LogIn 
+export default LogIn;
