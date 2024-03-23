@@ -1,4 +1,5 @@
 import React, {useState} from "react"
+import { useNavigate } from "react-router-dom"
 import Navbar from "../Navbar/Navbar"
 import "./CreateAccount.css"
 import PlazaOfTheAmericas from "./PlazaOfTheAmericas.png"
@@ -8,10 +9,13 @@ const CreateAccount = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate();
+
 
     const CreateAccount = () => {
         if (ValidateStuff()) {
             console.log(name, email, password, " are good!");
+            navigate("/home");
         }
     }   
 
