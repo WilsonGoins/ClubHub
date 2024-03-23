@@ -1,0 +1,91 @@
+.LP-bg-img {
+    position: absolute;
+    width: 98vw;
+    height: 100vh;
+    background-image: url("PlazaOfTheAmericas.png");
+    background-size: cover;
+    filter: blur(8px);
+}
+
+.LP-bg-img2 {
+    position: absolute;
+    top: 101%;
+    width: 98vw;
+    height: 100vh;
+    background-image: url("PlazaOfTheAmericas.png");
+    background-size: cover;
+    filter: blur(8px);
+}
+
+.LP-bg-img3 {
+    position: absolute;
+    top: 201%;
+    width: 98vw;
+    height: 100vh;
+    background-image: url("PlazaOfTheAmericas.png");
+    background-size: cover;
+    filter: blur(8px);
+}
+
+@font-face {
+    font-family: Montserrat;
+    src: url(../Assets/Montserrat-Font.ttf) format("truetype");
+}
+
+.IH-title-container {
+    position: absolute;
+    top: 17.5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.IH-title-2-container {
+    position: absolute;
+    width: 85%;
+    top: 25%;
+    left: 7.5%;
+    font-weight: bold
+}
+
+.IH-content-container {
+    top: 50%;
+    left: 7.5%;
+    width: 90%;
+    height: 250%;
+    position: absolute;
+}
+
+.IH-section-head-container {
+    position: relative;
+    margin-top: 5%;
+}
+
+.IH-section-head-text {
+    font-family: 'Montserrat';
+    font-size: 200%;
+    color: #A0FFDD;
+}
+
+.IH-section-body-container {
+    position: relative;
+    margin-left: 2.5%;
+    cursor: pointer;
+}
+
+.IH-section-body-text {
+    font-family: 'Montserrat'; 
+    font-size: 150%;
+    color: white;
+}
+
+.IH-section-subheading-container {
+    position: relative;
+    margin-left: 2.5%;
+}
+
+.IH-section-subheading-text {
+    font-family: 'Montserrat'; 
+    font-size: 125%;
+    color: white;
+}
+

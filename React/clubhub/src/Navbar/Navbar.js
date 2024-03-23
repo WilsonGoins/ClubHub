@@ -67,7 +67,7 @@ const Navbar = () => {
     return (
         <nav class="navbar navbar-expand-lg NVB-bg-color">
             <div class="container-fluid">
-                <a class="navbar-brand NVB-text-color" href="/" style={navItemStyles.clubHub} onMouseEnter={() => handleNavItemHover('clubHub')} onMouseLeave={() => handleNavItemMouseLeave('clubHub')}>ClubHub</a>
+                <a class="navbar-brand NVB-text-color" href="/home" style={navItemStyles.clubHub} onMouseEnter={() => handleNavItemHover('clubHub')} onMouseLeave={() => handleNavItemMouseLeave('clubHub')}>ClubHub</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>

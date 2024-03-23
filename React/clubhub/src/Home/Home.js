@@ -29,7 +29,7 @@ const Home = () => {
 
             {/* Information Hub */}
             <div>
-                <button type="button" class="btn btn-lg NVB-bg-color LP-login-btn" onClick={() => {navigate("/")}}>Information Hub</button>
+                <button type="button" class="btn btn-lg NVB-bg-color LP-login-btn" onClick={() => {navigate("/informationhub")}}>Information Hub</button>
             </div>
 
             {/* Question Forum */}
