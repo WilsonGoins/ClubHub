@@ -1,3 +1,40 @@
+@font-face {
+    font-family: Montserrat;
+    src: url(../Assets/Montserrat-Font.ttf) format("truetype");
+}
+
 .LP-title {
     color:darksalmon
+}
+
+.LP-background {
+    height: 100vh;
+    position: relative;
+    background-color: white;
+}
+
+.LP-title-container {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.LP-title-text {
+    font-family: 'Montserrat';
+    font-size: 425%;
+    font-weight: bold;
+}
+
+.LP-title-2-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.LP-title-2-text {
+    font-family: 'Montserrat';
+    font-size: 250%;
 }
