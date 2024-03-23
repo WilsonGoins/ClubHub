@@ -1,9 +1,16 @@
 import React from "react"
+import { useNavigate } from "react-router-dom"
 import Navbar from "../Navbar/Navbar"
 import "./LandingPage.css"
 import PlazaOfTheAmericas from "./PlazaOfTheAmericas.png"
 
 const LandingPage = () => {
+    const navigate = useNavigate();
+
+    const GoToCreateAccount = () => {
+        navigate("/createaccount");
+    }
+
 
     return (
         <div>
@@ -32,12 +39,12 @@ const LandingPage = () => {
 
             {/* create account */}
             <div>
-                <button type="button" class="btn btn-lg NVB-bg-color LP-create-btn">Create Account</button>
+                <button type="button" class="btn btn-lg NVB-bg-color LP-create-btn" onClick={GoToCreateAccount}>Create Account</button>
             </div>
 
-            {/* read more */}
+            {/* learn more */}
             <div>
-                <button type="button" class="btn btn-lg NVB-bg-color LP-read-btn">Read More</button>
+                <button type="button" class="btn btn-lg NVB-bg-color LP-learn-btn">Learn More</button>
             </div>
         </div>
     )

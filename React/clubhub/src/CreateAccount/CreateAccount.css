@@ -1,0 +1,56 @@
+@font-face {
+    font-family: Montserrat;
+    src: url(../Assets/Montserrat-Font.ttf) format("truetype");
+}
+
+.CA-title-container {
+    position: absolute;
+    top: 37.5%;
+    left: 60%;
+    width: 60%;
+    transform: translate(-60%, -50%);   
+}
+
+.CA-title-text {
+    font-family: 'Montserrat';
+    font-size: 400%;
+    color: white;
+}
+
+.CA-name-text {
+    position: absolute;
+    left: 30%;
+    top: 50%;
+}
+
+.CA-email-text {
+    position: absolute;
+    left: 30%;
+    top: 60%;
+
+}
+
+.CA-password-text {
+    position: absolute;
+    left: 30%;
+    top: 70%; 
+}
+
+.CA-help-text {
+    color: white;
+}
+
+.CA-create-btn {
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    width: 20%;
+    font-size: 125%;
+    color: white;
+    transform: translate(-50%, -50%);
+}
+
+.CA-create-btn:hover {
+    color: #A0FFDD;
+    background-color: darksalmon;
+}
