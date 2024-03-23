@@ -58,6 +58,10 @@ const CreateAccount = () => {
         return true;
     };
 
+    const GoToLogin = () => {
+        navigate("/login")
+    }
+
     return (
         <>
             <div>
@@ -123,6 +127,11 @@ const CreateAccount = () => {
                     Create Account
                 </button>
             </form>
+
+            <div>
+                <button type="submit" className="btn btn-lg NVM-bg-color CA-login-btn" onClick={GoToLogin}>Login</button>
+            </div>
+
         </>
     )
 }

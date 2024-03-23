@@ -74,7 +74,7 @@ const Navbar = () => {
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                    <a class="nav-link NVB-text-color" href="#" aria-current="page" style={navItemStyles.informationHub} onMouseEnter={() => handleNavItemHover('informationHub')} onMouseLeave={() => handleNavItemMouseLeave('informationHub')}>Information Hub</a>
+                    <a class="nav-link NVB-text-color" href="/informationhub" aria-current="page" style={navItemStyles.informationHub} onMouseEnter={() => handleNavItemHover('informationHub')} onMouseLeave={() => handleNavItemMouseLeave('informationHub')}>Information Hub</a>
                     </li>
                     <li class="nav-item">
                     <a class="nav-link NVB-text-color" href="#" style={navItemStyles.questionForum} onMouseEnter={() => handleNavItemHover('questionForum')} onMouseLeave={() => handleNavItemMouseLeave('questionForum')}>Question Forum</a>
