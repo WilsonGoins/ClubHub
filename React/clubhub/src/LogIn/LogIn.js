@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 const LogIn = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const[loginError, setLoginError] = useState(false);
     const navigate = useNavigate();
 
     const handleLogIn = (event) => {
@@ -23,9 +24,23 @@ const LogIn = () => {
                 .catch(error => {
                     // Handle login errors
                     console.error("Error signing in:", error.message);
+                    
                 });
         }
     };
+
+    const errorMessage = () => {
+        if(loginError){
+            return (
+                <div className="LI-alert-container">
+                        <div className="LI-alert">Invalid email or password. Please try again.</div>
+                </div>
+            );
+        }
+        else{
+            return null;
+        }
+    }
 
     const GoToCreateAccount = () => {
         navigate("/createaccount");
@@ -37,11 +52,13 @@ const LogIn = () => {
 
         if (!emailRegex.test(email)) {
             console.error("Invalid email format");
+            setLoginError(true);
             return false;
         }
 
         if (!passwordRegex.test(password)) {
             console.error("Invalid password format");
+            setLoginError(true);
             return false;
         }
 
@@ -68,7 +85,7 @@ const LogIn = () => {
                 <div className="row g-3 align-items-center LI-email-box">
                     <div className="col-auto">
                         <input type="text" placeholder="Email" className="form-control" aria-describedby="emailHelp"
-                               onChange={(event) => setEmail(event.target.value)}
+                               onChange={(event) => {setEmail(event.target.value); setLoginError(false)}}
                                value={email}
                         />
                     </div>
@@ -83,7 +100,7 @@ const LogIn = () => {
                 <div className="row g-3 align-items-center LI-password-box">
                     <div className="col-auto">
                         <input type="password" placeholder="Password" className="form-control" aria-describedby="passwordHelp"
-                               onChange={(event) => setPassword(event.target.value)}
+                               onChange={(event) => {setPassword(event.target.value); setLoginError(false)}}
                                value={password}
                         />
                     </div>
@@ -93,6 +110,9 @@ const LogIn = () => {
                         </span>
                     </div>
                 </div>
+                
+                {/* Error message */}
+                {errorMessage()}
 
                 {/* login button */}
                 <div>
@@ -100,6 +120,7 @@ const LogIn = () => {
                 </div>
             </form>
 
+            {/* Create Account Button */}
             <div>
                 <button type="submit" className="btn btn-lg NVM-bg-color LI-create-account-btn" onClick={GoToCreateAccount}>Create Account</button>
             </div>
