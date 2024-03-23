@@ -1,6 +1,14 @@
+import React from "react"
+import Navbar from "../Navbar/Navbar"
+
 const LandingPage = () => {
+
     return (
-        <h1>ClubHub</h1>
+        <div style={{height: "100vh", position: "relative", backgroundColor: "antiquewhite"}}>
+            <Navbar />
+        
+            <h1>ClubHub</h1>
+        </div>
     )
 }
 
