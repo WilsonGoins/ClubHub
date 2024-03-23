@@ -57,13 +57,14 @@
 
 .IH-section-head-container {
     position: relative;
-    margin-top: 5%;
+    margin-top: 2.5%;
 }
 
 .IH-section-head-text {
     font-family: 'Montserrat';
     font-size: 200%;
     color: #A0FFDD;
+    font-weight: bold;
 }
 
 .IH-section-body-container {
@@ -76,6 +77,10 @@
     font-family: 'Montserrat'; 
     font-size: 150%;
     color: white;
+}
+
+.IH-section-body-text:hover {
+    color: darksalmon;
 }
 
 .IH-section-subheading-container {
