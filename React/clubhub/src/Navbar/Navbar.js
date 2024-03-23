@@ -1,8 +1,25 @@
-import React from "react"
+import React, {useState} from "react"
 import {useNavigate} from "react-router-dom";
 import "./Navbar.css"
 
 const Navbar = () => {
+    const [hovered, setHovered] = useState(false);
+
+    const searchButtonStyle = {
+        backgroundColor: hovered ? '#A0FFDD' : '#E9967A',
+        borderColor: hovered ? '#A0FFDD' : '#A0FFDD',
+        color: hovered ? '#E9967A' : '#FFFFFF',
+        transition: 'background-color 0.3s, border-color 0.3s, color 0.3s'
+    };
+
+    const handleHover = () => {
+        setHovered(true);
+    };
+
+    const handleMouseLeave = () => {
+        setHovered(false);
+    };
+
     return (
         <nav class="navbar navbar-expand-lg NVB-bg-color">
             <div class="container-fluid">
@@ -36,7 +53,7 @@ const Navbar = () => {
                 </ul>
                 <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                    <button class="btn btn-outline-success  NVB-text-color" type="submit">Search</button>
+                    <button class="btn btn-outline-success  NVB-text-color" style={searchButtonStyle} onMouseEnter={handleHover} onMouseLeave={handleMouseLeave} type="submit">Search</button>
                 </form>
                 </div>
             </div>
