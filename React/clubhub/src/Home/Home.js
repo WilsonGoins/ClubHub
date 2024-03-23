@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import Navbar from "../Navbar/Navbar"
 import "./Home.css"
@@ -6,6 +6,12 @@ import PlazaOfTheAmericas from "./PlazaOfTheAmericas.png"
 
 const Home = () => {
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!true) {     // TODO: check if they are NOT logged in                                IMPORTANT
+            navigate("/")
+        }
+    }, []);
 
     return (
         <div>
@@ -34,12 +40,12 @@ const Home = () => {
 
             {/* Question Forum */}
             <div>
-                <button type="button" class="btn btn-lg NVB-bg-color LP-create-btn" onClick={() => {navigate("/")}}>Question Forum</button>
+                <button type="button" class="btn btn-lg NVB-bg-color LP-create-btn" onClick={() => {navigate("/questionforum")}}>Question Forum</button>
             </div>
 
             {/* Event Scheudle */}
             <div>
-                <button type="button" class="btn btn-lg NVB-bg-color LP-learn-btn" onClick={()=> {navigate("/")}}>Event Schedule</button>
+                <button type="button" class="btn btn-lg NVB-bg-color LP-learn-btn" onClick={()=> {navigate("/eventschedule")}}>Event Schedule</button>
             </div>
         </div>
     )

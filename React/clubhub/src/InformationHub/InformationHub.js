@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import Navbar from "../Navbar/Navbar"
 import "./InformationHub.css"
@@ -8,6 +8,7 @@ import Malachowsky from "./Malachowsky.png"
 
 const InformationHub = () => {
     const navigate = useNavigate();
+
     const DEI1 = "https://www.mckinsey.com/featured-insights/mckinsey-explainers/what-is-diversity-equity-and-inclusion";
     const DEI2 = "https://www.forbes.com/sites/forbescoachescouncil/2021/09/08/14-tips-for-implementing-dei-initiatives-that-actually-succeed/?sh=483e6e1a4088"
     const DEI3 = "https://peopleadmin.com/blog/diversity-guide-top-10-practical-steps-for-advancing-diversity-equity-and-inclusion-in-higher-education/";
@@ -29,6 +30,12 @@ const InformationHub = () => {
     const STR4 = "https://studentinvolvement.ufl.edu/wp-content/uploads/2022/08/SAI-USSO-Policy-2022.pdf";
     const STR5 = "https://studentinvolvement.ufl.edu/wp-content/uploads/2021/09/Student-Org-Resource-Guide-min.pdf";
 
+    useEffect(() => {
+        if (!true) {     // TODO: check if they are NOT logged in                                IMPORTANT
+            navigate("/")
+        }
+    }, []);
+
 
     return (
         <div>
@@ -41,7 +48,7 @@ const InformationHub = () => {
             </div>
 
             <div>
-                <img src={Malachowsky} alt="Malachowsky - UF" className="LP-bg-img3" />
+                <img src={Malachowsky} alt="Malachowsky - UF" className="LP-bg-img3"/>
             </div>
 
             <Navbar />
@@ -276,7 +283,6 @@ const InformationHub = () => {
                     </div>
                 </div>
             </div>
-
         </div>
     )
 }

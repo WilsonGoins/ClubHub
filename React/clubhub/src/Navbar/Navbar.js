@@ -3,6 +3,7 @@ import {useNavigate} from "react-router-dom";
 import "./Navbar.css"
 
 const Navbar = () => {
+    const navigate = useNavigate();
     const [searchHovered, setSearchHovered] = useState(false);
     const [navItemHovered, setNavItemHovered] = useState({
         clubHub: false,
@@ -11,6 +12,22 @@ const Navbar = () => {
         eventSchedule: false,
         donateToWilson: false
     });
+
+    const navigationFunction = (_page) => {
+        if (_page === "/home") {      // different if block because this is for clicking "ClubHub" which should go back to landing page
+            if (true) {     // TODO: replace with a check if they are logged in         IMPORTANT
+                navigate("/home");
+            } else {
+                navigate("/");
+            }
+        } else {
+            if (false) {     // TODO: replace with if they are logged in                IMPORTANT
+                navigate(_page);
+            } else {        
+                navigate("/createaccount");
+            }
+        }
+    }
 
     const searchButtonStyle = {
         backgroundColor: searchHovered ? '#A0FFDD' : '#E9967A',
@@ -67,23 +84,36 @@ const Navbar = () => {
     return (
         <nav class="navbar navbar-expand-lg NVB-bg-color">
             <div class="container-fluid">
-                <a class="navbar-brand NVB-text-color" href="/home" style={navItemStyles.clubHub} onMouseEnter={() => handleNavItemHover('clubHub')} onMouseLeave={() => handleNavItemMouseLeave('clubHub')}>ClubHub</a>
+                <a class="navbar-brand NVB-text-color" style={navItemStyles.clubHub} onMouseEnter={() => handleNavItemHover('clubHub')} onMouseLeave={() => handleNavItemMouseLeave('clubHub')}
+                    onClick={() => navigationFunction("/home")}>
+                    ClubHub
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                    <a class="nav-link NVB-text-color" href="/informationhub" aria-current="page" style={navItemStyles.informationHub} onMouseEnter={() => handleNavItemHover('informationHub')} onMouseLeave={() => handleNavItemMouseLeave('informationHub')}>Information Hub</a>
+                    <a class="nav-link NVB-text-color" aria-current="page" style={navItemStyles.informationHub} onMouseEnter={() => handleNavItemHover('informationHub')} onMouseLeave={() => handleNavItemMouseLeave('informationHub')}
+                        onClick={() => {navigationFunction("/informationhub")}}>
+                        Information Hub
+                    </a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link NVB-text-color" href="#" style={navItemStyles.questionForum} onMouseEnter={() => handleNavItemHover('questionForum')} onMouseLeave={() => handleNavItemMouseLeave('questionForum')}>Question Forum</a>
+                    <a class="nav-link NVB-text-color" style={navItemStyles.questionForum} onMouseEnter={() => handleNavItemHover('questionForum')} onMouseLeave={() => handleNavItemMouseLeave('questionForum')}
+                        onClick={() => {navigationFunction("/questionforum")}}>
+                        Question Forum
+                    </a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link NVB-text-color" aria-disabled="true" style={navItemStyles.eventSchedule} onMouseEnter={() => handleNavItemHover('eventSchedule')} onMouseLeave={() => handleNavItemMouseLeave('eventSchedule')}>Event Schedule</a>
+                    <a class="nav-link NVB-text-color" aria-disabled="true" style={navItemStyles.eventSchedule} onMouseEnter={() => handleNavItemHover('eventSchedule')} onMouseLeave={() => handleNavItemMouseLeave('eventSchedule')}
+                        onClick={() => {navigationFunction("/eventschedule")}}>
+                        Event Schedule
+                    </a>
                     </li>
                     <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle NVB-text-color" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style={navItemStyles.donateToWilson} onMouseEnter={() => handleNavItemHover('donateToWilson')} onMouseLeave={() => handleNavItemMouseLeave('donateToWilson')}>
+                    <a class="nav-link dropdown-toggle NVB-text-color"  role="button" data-bs-toggle="dropdown" aria-expanded="false" style={navItemStyles.donateToWilson} onMouseEnter={() => handleNavItemHover('donateToWilson')} onMouseLeave={() => handleNavItemMouseLeave('donateToWilson')}
+                        onClick={() => {navigationFunction("/#")}}>
                         Donate to Wilson
                     </a>
                     <ul class="dropdown-menu">
