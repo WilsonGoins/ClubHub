@@ -11,6 +11,9 @@ const LandingPage = () => {
         navigate("/createaccount");
     }
 
+    const goToLogin = () => {
+        navigate("/login");
+    }
 
     return (
         <div>
@@ -34,7 +37,7 @@ const LandingPage = () => {
 
             {/* log in */}
             <div>
-                <button type="button" class="btn btn-lg NVB-bg-color LP-login-btn">Log In</button>
+                <button type="button" class="btn btn-lg NVB-bg-color LP-login-btn" onClick={goToLogin}>Log In</button>
             </div>
 
             {/* create account */}

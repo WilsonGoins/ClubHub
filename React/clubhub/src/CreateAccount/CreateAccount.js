@@ -5,6 +5,7 @@ import "./CreateAccount.css"
 import PlazaOfTheAmericas from "./PlazaOfTheAmericas.png"
 
 
+
 const CreateAccount = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -16,6 +17,9 @@ const CreateAccount = () => {
         if (ValidateStuff()) {
             console.log(name, email, password, " are good!");
             navigate("/home");
+        }
+        else {
+            console.log("bad");
         }
     }   
 
