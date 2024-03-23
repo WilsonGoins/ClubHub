@@ -27,6 +27,10 @@ const LogIn = () => {
         }
     };
 
+    const GoToCreateAccount = () => {
+        navigate("/createaccount");
+    }
+
     const validateInput = () => {
         const emailRegex = /^\S+@ufl\.edu$/;
         const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*()-_+=])[A-Za-z\d!@#$%^&*()-_+=]{8,20}$/;
@@ -95,6 +99,10 @@ const LogIn = () => {
                     <button type="submit" className="btn btn-lg NVB-bg-color LI-login-btn">Log In</button>
                 </div>
             </form>
+
+            <div>
+                <button type="submit" className="btn btn-lg NVM-bg-color LI-create-account-btn" onClick={GoToCreateAccount}>Create Account</button>
+            </div>
 
         </div>
     )
