@@ -1,0 +1,9 @@
+This is the ReadMe for dependencies to install:
+
+1. Open a terminal and run:
+   "cd React/clubhub"
+   "npm install"
+   "npm install react-router-dom"
+2. In a different terminal run:
+   "cd Firebase"
+   "npm install Firebase"
