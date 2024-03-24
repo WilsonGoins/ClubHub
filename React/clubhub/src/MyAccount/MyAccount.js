@@ -9,7 +9,7 @@ const MyAccount = () => {
     const navigate = useNavigate();
     const [searchHovered, setSearchHovered] = useState(false);
     const [clubToAdd, setClubToAdd] = useState("");
-    const clubList = ["OSC", "SASE", "SwampHacks", "LinearLovers"];     // TODO: get club list from database
+    const [clubList, setClubList] = useState([]);
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
 
@@ -42,6 +42,12 @@ const MyAccount = () => {
         if (!true) {     // TODO: check if they are NOT logged in                                IMPORTANT
             navigate("/")
         }
+        const options = [                   // todo: get form backend
+            {value: "OSC", label: "OSC"},
+            {value: "ACM", label: "ACM"},
+            {value: "SASE", label: "SASE"}
+        ]
+        //setClubList(options);
     }, []);
 
     const handleSearchHover = () => {
@@ -51,6 +57,7 @@ const MyAccount = () => {
     const handleSearchMouseLeave = () => {
         setSearchHovered(false);
     };
+    
 
 
     return (
@@ -88,9 +95,8 @@ const MyAccount = () => {
                 </div>
 
                 <ul>
-                    {clubList.map((item, index) => (
-                        <li key={index} className="MA-club-text" onClick={() => {navigate(item)}}>{item}</li>
-                    ))}
+                    {clubList.map((item, label) => (
+                        <li className="MA-club-text" onClick={() => {navigate(item.value)}}>{item.value}</li>                    ))}
                 </ul>
             </div>
 

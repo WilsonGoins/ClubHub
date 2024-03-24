@@ -98,7 +98,7 @@ const QuestionForum = () => {
         }));
     };
 
-    const getResults = async (event) => {           // TODO: jake compare to database, the function
+    const getResults = async (event) => {
         event.preventDefault();
 
         setSearched(true);

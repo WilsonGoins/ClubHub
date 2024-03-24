@@ -13,7 +13,7 @@ const Home = () => {
     useEffect(() => {
 
         console.log(localStorage)
-        if (localStorage.getItem('LoggedIn') === "false") {     // TODO: check if they are NOT logged in                                IMPORTANT
+        if (localStorage.getItem('LoggedIn') === "false") {
             navigate("/")
             }
     }, []);
