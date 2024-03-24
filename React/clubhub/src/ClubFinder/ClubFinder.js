@@ -35,14 +35,20 @@ const ClubFinder = () => {
                     </div>
 
                     <div className="CF-clubs-container">
-                        {clubsRes.map((club, name) => (
+                        {testArray.map((club, title) => (
                             <div key={club}>
                                 <button className="CF-clubs-button btn btn-outline-success NVB-text-color" style={navItemStyles}
-                                    onClick={() => {{setIsSelected(true)}; {setSelectedClub(club.name)}}}>
-                                    <p>{club.name}</p>
+                                    onClick={() => {{setIsSelected(true)}; {setSelectedClub(club.title)}}}>
+                                    <p>{club.title}</p>
                                 </button>
                             </div>
                         ))}
+                        
+                        <div className="CF-new-club-txt" onClick={() => {navigate("/newclubinfo")}}>
+                   
+                            Can't find an org? Help us out by adding it here!
+                        </div>
+
                     </div>
                 </>
             )}

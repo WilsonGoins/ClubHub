@@ -70,5 +70,12 @@
     color: white;
 }
 
-
+.CF-new-club-txt {
+    font-family: 'Montserrat';
+    font-size: 100%;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+}
 
