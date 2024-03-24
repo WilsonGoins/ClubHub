@@ -6,13 +6,12 @@ import { getFirestore, collection } from 'firebase/firestore'
 
 // TODO: Replace the following with your app's Firebase project configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyAAlQgBtK9h8RUnJYXUMY5J6ul71TS8xLw",
-    authDomain: "clubhub-a7820.firebaseapp.com",
-    projectId: "clubhub-a7820",
-    storageBucket: "clubhub-a7820.appspot.com",
-    messagingSenderId: "775204573412",
-    appId: "1:775204573412:web:bfaceb518cbf728d82dcf1",
-    measurementId: "G-D041YSTGDH"
+    apiKey: "AIzaSyCotaEkyqbdlmv9Vm27M2G9QireZzHNlwU",
+    authDomain: "clubhub2-7bbe1.firebaseapp.com",
+    projectId: "clubhub2-7bbe1",
+    storageBucket: "clubhub2-7bbe1.appspot.com",
+    messagingSenderId: "514701562919",
+    appId: "1:514701562919:web:1338d3e53e9a214f1a6a02"
 };
 
 const app = initializeApp(firebaseConfig);
