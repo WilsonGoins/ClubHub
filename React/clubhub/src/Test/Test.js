@@ -49,6 +49,9 @@ import React, { useState, useEffect } from "react";
 import { collection, doc, setDoc, getDoc } from "firebase/firestore";
 import { firestore } from "../firebase";
 import { createClub, findClub, editClubName } from "../functions/Club";
+import { initializeBoard } from "../functions/ForumBoard";
+import { initializeComment } from "../functions/Comment";
+import { initializePost } from "../functions/Post";
 
 const Test = () => { // dummy template to test functions with firebase
     const [dataLoaded, setDataLoaded] = useState(false);
@@ -134,4 +137,30 @@ const TestClub = () => {
     )
 }
 
-export default TestClub;
+const TestFuncs = () => {
+    const [loaded, set] = useState(false);
+
+    useEffect(() => {
+        console.log("Running stuff...");
+        const fetchData = async () => {
+            console.log("Checking date...");
+            const currDate = new Date();
+            console.log("Checked date.");
+            initializeBoard("test tile", "dummy board for dummy people");
+            initializePost("john doe", "DOSC", currDate, "I am going insane", "Crazy?"); // author, club, date, text, title
+            initializeComment("heehee", "joey", currDate, "this is gas") // postID, author, date, text, likes
+        }
+
+        fetchData();
+    }, []);
+
+    if (!loaded) {
+        return <p>Running functions...</p>
+    }
+
+    return (
+        <p>Functions done!</p>
+    )
+}
+
+export default TestFuncs;

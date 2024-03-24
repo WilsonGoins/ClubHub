@@ -4,13 +4,27 @@ import * as fs from "firebase/firestore";
 const createClub = async () => {
     try {
         const clubsRef = fs.collection(firestore, "clubs");
-        const newUser = await fs.addDoc(clubsRef, {
+        const newDoc = await fs.addDoc(clubsRef, {
             name: "test",
             bio: "testing",
-            members: [] // refers to collection, use {} for document
+            admins: [], // refers to collection, use {} for document
+            tags: []
         })
     } catch (error) {
         console.error("Unexpected error in createClub: ", error);
+    }
+}
+
+const initializeClub = async (name, bio, userID) => {
+    try {
+        const clubsRef = fs.collection(firestore, "clubs");
+        await fs.addDoc(clubsRef, {
+            name: name,
+            bio: bio,
+            admins: fs.arrayUnion(userID)
+        })
+    } catch (error) {
+        console.error("Unexpected error in initializeClub: ", error);
     }
 }
 
@@ -41,4 +55,4 @@ const editClubName = async (targetName, newName) => { // edits club name directl
     }
 }
 
-export { createClub, findClub, editClubName };
+export { createClub, initializeClub, findClub, editClubName };
