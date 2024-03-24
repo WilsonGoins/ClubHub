@@ -51,7 +51,7 @@ const NewClubInfo = () => {
 
     const handleCheckbox = (event) => {
         const value = event.target.type === "checkbox" ? event.target.checked : event.target.value;
-        setNewClub(event.target.value);
+        setNewClub(!newClub);
     }
 
 
@@ -80,30 +80,35 @@ const NewClubInfo = () => {
                 </div>
             </div>
 
-            {/* club name */}
-            <div className="NCI-club-name-container mb-3">
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Club Name" onChange={(event) => {setClubName(event.target.value)}} value={clubName}/>
-            </div>
+            {newClub && (
+                <>
+                    {/* club name */}
+                    <div className="NCI-club-name-container mb-3">
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Club Name" onChange={(event) => {setClubName(event.target.value)}} value={clubName}/>
+                    </div>
 
-            <div className="NCI-person-name-container">
-                {/* president name */}
-                <input type="email" className="NCI-person-item form-control" id="exampleFormControlInput1" placeholder="President Name" onChange={(event) => {setPresident(event.target.value)}} value={president}/>
+                    <div className="NCI-person-name-container">
+                        {/* president name */}
+                        <input type="email" className="NCI-person-item form-control" id="exampleFormControlInput1" placeholder="President Name" onChange={(event) => {setPresident(event.target.value)}} value={president}/>
 
-                {/* vice president name */}
-                <input type="email" className="NCI-person-item form-control" id="exampleFormControlInput1" placeholder="Vice President Name" onChange={(event) => {setVicePresident(event.target.value)}} value={vicePresident}/>
+                        {/* vice president name */}
+                        <input type="email" className="NCI-person-item form-control" id="exampleFormControlInput1" placeholder="Vice President Name" onChange={(event) => {setVicePresident(event.target.value)}} value={vicePresident}/>
 
-                {/* treasurer name */}
-                <input type="email" className="NCI-person-item form-control" id="exampleFormControlInput1" placeholder="Treasurer Name" onChange={(event) => {setTreasurer(event.target.value)}} value={treasurer}/>
-            </div>
+                        {/* treasurer name */}
+                        <input type="email" className="NCI-person-item form-control" id="exampleFormControlInput1" placeholder="Treasurer Name" onChange={(event) => {setTreasurer(event.target.value)}} value={treasurer}/>
+                    </div>
 
-            <div class="NCI-post-text-container mb-3">
-                <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Description" rows="3" onChange={(event) => {setDescription(event.target.value)}} value={description}></textarea>
-            </div>
+                    <div class="NCI-post-text-container mb-3">
+                        <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Description" rows="3" onChange={(event) => {setDescription(event.target.value)}} value={description}></textarea>
+                    </div>
 
-            <button className="CP-create-post-btn btn btn-outline-success NVB-text-color" style={searchButtonStyle} onMouseEnter={handleSearchHover} onMouseLeave={handleSearchMouseLeave} type="submit"
-                onClick={CreateClub}>
-                Create Club
-            </button>
+                    <button className="CP-create-post-btn btn btn-outline-success NVB-text-color" style={searchButtonStyle} onMouseEnter={handleSearchHover} onMouseLeave={handleSearchMouseLeave} type="submit"
+                        onClick={CreateClub}>
+                        Create Club
+                    </button>
+                </>
+            )}
+            
         </div>
     )
 }
