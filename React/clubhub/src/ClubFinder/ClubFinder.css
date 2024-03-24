@@ -1,0 +1,36 @@
+.CF-title-container {
+    position: absolute;
+    width: 50%;
+    top: 20%;
+    left: 50%;
+    font-size: 350%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+}
+
+.CF-title-text {
+    font-family: 'Montserrat';
+    font-size: 120%;
+    font-weight: bold;
+    color: white;
+}
+
+.CF-clubs-container {
+    position: absolute;
+    width: 100%;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.CF-clubs-button {
+    position: relative;
+    margin-top: 2%;
+    width: 50%;
+    top: 45%;
+    left: 50%;
+    text-align: left;
+    font-size: 150%;
+    transform: translate(-50%, -50%);
+}
+
