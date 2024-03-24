@@ -31,7 +31,7 @@ const InformationHub = () => {
     const STR5 = "https://studentinvolvement.ufl.edu/wp-content/uploads/2021/09/Student-Org-Resource-Guide-min.pdf";
 
     useEffect(() => {
-        if (localStorage.getItem('LoggedIn') === "false") {                                  
+        if (localStorage.getItem('LoggedIn') === "false") {     // TODO: check if they are NOT logged in                                IMPORTANT
             navigate("/")
         }
     }, []);

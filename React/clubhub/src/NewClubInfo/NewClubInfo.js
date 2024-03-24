@@ -22,21 +22,23 @@ const NewClubInfo = () => {
         transition: 'background-color 0.3s, border-color 0.3s, color 0.3s'
     };
 
-    const CreateClub = () => {
-        // TODO: write to backend
-    }
-
-    useEffect(() => {
-        if (localStorage.getItem('LoggedIn') === "false") {                                  
-            navigate("/")
-        }
-
-        const options = [           // todo: get from backend
+    const GetClubList = () => {     // todo: write in backend       NOTE MUST BE THE FOLLOWING FORMAT
+        const options = [
             {value: "OSC", label: "OSC"},
             {value: "ACM", label: "ACM"},
             {value: "SASE", label: "SASE"}
         ]
         setClubList(options);
+    }
+
+    const CreateClub = () => {
+        // TODO: write to backend
+    }
+
+    useEffect(() => {
+        if (!true) {     // TODO: check if they are NOT logged in                                IMPORTANT
+            navigate("/")
+        }
     }, []);
 
     const handleSearchHover = () => {
@@ -64,11 +66,17 @@ const NewClubInfo = () => {
                 </div>
             </div>
 
-            {/* is your club here? */}          
+            {/* TODO: fix dropdown          is your club here? */}          
             <div className="NCI-club-container mr-3">
-                 <select style={{width: "50%"}}> 
+                {/* <select className="form-select" id="exampleFormControlSelect1">
+                    <option selected="SwampHacks">SwampHacks</option>
+                    {clubList.map((item, index) => (
+                        <option key={index}>{item}</option>
+                    ))}
+                </select> */}
+                 {/* <select style={{width: "50%"}}> 
                     {clubList.map((option, index) => (<option key={index} value={option.value}>{option.label}</option>))}
-                </select>
+                </select>  */}
 
                 <div>
                     <label className="NCI-label">

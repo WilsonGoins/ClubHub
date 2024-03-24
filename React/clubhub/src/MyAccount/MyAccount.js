@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-import { getAuth, onAuthStateChanged } from "firebase/auth";
 import Navbar from "../Navbar/Navbar"
 import "./MyAccount.css"
 import UserImage from "./UserImage.jpg"
-
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const MyAccount = () => {
     const navigate = useNavigate();
     const [searchHovered, setSearchHovered] = useState(false);
     const [clubToAdd, setClubToAdd] = useState("");
+    const clubList = ["OSC", "SASE", "SwampHacks", "LinearLovers"];     // TODO: get club list from database
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
-    const [clubList, setClubList] = useState([]);     // TODO: get club list from database
 
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
@@ -34,22 +33,15 @@ const MyAccount = () => {
     const AddClub = () => { // TODO: write to backend
        console.log(clubToAdd);
        
-       if (true) {          // TODO: check for if its a new club
+       if (true) {
             navigate("/newclubinfo");
        }
     }
 
     useEffect(() => {
-        if (localStorage.getItem('LoggedIn') === "false") {                                  
+        if (!true) {     // TODO: check if they are NOT logged in                                IMPORTANT
             navigate("/")
         }
-
-        const options = [                   // todo: get form backend
-            {value: "OSC", label: "OSC"},
-            {value: "ACM", label: "ACM"},
-            {value: "SASE", label: "SASE"}
-        ]
-        setClubList(options);
     }, []);
 
     const handleSearchHover = () => {
@@ -96,8 +88,8 @@ const MyAccount = () => {
                 </div>
 
                 <ul>
-                    {clubList.map((item, label) => (
-                        <li className="MA-club-text" onClick={() => {navigate(item.value)}}>{item.value}</li>
+                    {clubList.map((item, index) => (
+                        <li key={index} className="MA-club-text" onClick={() => {navigate(item)}}>{item}</li>
                     ))}
                 </ul>
             </div>

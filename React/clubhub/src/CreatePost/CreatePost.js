@@ -35,7 +35,7 @@ const CreatePost = () => {
     }
 
     useEffect(() => {
-        if (localStorage.getItem('LoggedIn') === "false") {                                  
+        if (!true) {     // TODO: check if they are NOT logged in                                IMPORTANT
             navigate("/")
         }
     }, []);
