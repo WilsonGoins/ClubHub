@@ -30,7 +30,7 @@ const CreatePost = () => {
                 console.error("Not logged in.")
             }
         })
-
+        navigate("/home")
         return null;
     }
 

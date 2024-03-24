@@ -33,6 +33,8 @@ const NewClubInfo = () => {
 
     const CreateClub = () => {
         // TODO: write to backend
+
+        navigate("/home")
     }
 
     useEffect(() => {

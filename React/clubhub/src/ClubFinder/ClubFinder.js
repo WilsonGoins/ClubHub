@@ -21,6 +21,11 @@ const ClubFinder = () => {
         borderColor: '#A0FFDD',
         color: '#E9967A'
     }
+    const navItemStyles2 = {
+        backgroundColor: '#E9967A',
+        borderColor: '#E9967A',
+        color: '#FFFFFF'
+    }
     
     return(
         <>
@@ -55,6 +60,11 @@ const ClubFinder = () => {
 
             {isSelected && (
                 <>
+                    <button className="CF-create-btn btn btn-outline-success NVB-text-color" style={navItemStyles2}
+                    onClick={() => {setIsSelected(false)}}>
+                        Back
+                    </button>
+
                     <div className="CF-title-container">
                         <div className="CF-title-text">
                             {selectedClub}
