@@ -5,6 +5,7 @@ import { createClub, findClub, editClubName } from "../functions/Club";
 import { initializeBoard } from "../functions/ForumBoard";
 import { initializeComment } from "../functions/Comment";
 import { initializePost } from "../functions/Post";
+import { initializeUserProfile, retrieveUserProfile, retrieveUserData } from "../functions/User";
 
 const Test = () => { // dummy template to test functions with firebase
     const [dataLoaded, setDataLoaded] = useState(false);
@@ -116,4 +117,26 @@ const TestFuncs = () => {
     )
 }
 
-export default TestFuncs;
+const TestUsers = () => {
+    const [loaded, set] = useState(false);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            //initializeUserProfile("wordle", "heepheep");
+            const data = await retrieveUserProfile("dummy@ufl.edu");
+            console.log(data.name);
+            set(true);
+        }
+        fetchData();
+    }, []);
+
+    if (!loaded) {
+        return <p>Running...</p>
+    }
+
+    return (
+        <p>User data: {JSON.stringify(loaded.name)}</p>
+    )
+}
+
+export default TestUsers;

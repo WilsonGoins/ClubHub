@@ -5,6 +5,7 @@ import "./CreateAccount.css";
 import PlazaOfTheAmericas from "./PlazaOfTheAmericas.png";
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from '../firebase';
+import { initializeUserProfile } from "../functions/User";
 
 const CreateAccount = () => {
     const [name, setName] = useState("");
@@ -31,6 +32,7 @@ const CreateAccount = () => {
                 });
 
                 console.log("User created:", user);
+                initializeUserProfile(user.displayName, email);
                 navigate("/login");
             } catch (error) {
                 console.error("Error creating user:", error.message);

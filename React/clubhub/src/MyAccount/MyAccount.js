@@ -3,26 +3,42 @@ import { useNavigate } from "react-router-dom"
 import Navbar from "../Navbar/Navbar"
 import "./MyAccount.css"
 import UserImage from "./UserImage.jpg"
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { initializeUserProfile, retrieveUserData, retrieveUserProfile } from "../functions/User"
+import { auth } from "../firebase"
+import { onAuthStateChanged } from "firebase/auth"
 
 const MyAccount = () => {
+
+    const fetchData = async (targetEmail) => {
+        const data = await retrieveUserProfile(targetEmail);
+        setList(data.clubs);
+        console.log(data.name);
+    }
+
+    useEffect(() => {
+        console.log("effect");
+        if (!true) {     // TODO: check if they are NOT logged in                                IMPORTANT
+            navigate("/")
+        }
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setName(user.displayName)
+                setEmail(user.email);
+                fetchData(user.email);
+            }
+        })
+    }, []);
+
     const navigate = useNavigate();
     const [searchHovered, setSearchHovered] = useState(false);
     const [clubToAdd, setClubToAdd] = useState("");
-    let clubList = [{value: "OSC", label: "OSC"},
-                    {value: "ACM", label: "ACM"},
-                    {value: "SASE", label: "SASE"}];
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
-    const auth = getAuth();
+    const [clubList, setList] = useState([]);     // TODO: get club list from database
 
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-            setName(user.displayName);
-            setEmail(user.email);
-            // todo: get clubs
-        }
-    });
+    const AddClub = () => { // TODO: write to backend
+        console.log(clubToAdd);
+    }
 
     const searchButtonStyle = {
         backgroundColor: searchHovered ? '#A0FFDD' : '#E9967A',
@@ -31,19 +47,7 @@ const MyAccount = () => {
         transition: 'background-color 0.3s, border-color 0.3s, color 0.3s'
     };
 
-    const AddClub = () => { // TODO: write to backend
-       console.log(clubToAdd);
-       
-       if (true) {
-            navigate("/newclubinfo");
-       }
-    }
-
-    useEffect(() => {
-        if (localStorage.getItem('LoggedIn') === "false") {
-            navigate("/")
-        }
-    }, []);
+    
 
     const handleSearchHover = () => {
         setSearchHovered(true);
@@ -52,7 +56,7 @@ const MyAccount = () => {
     const handleSearchMouseLeave = () => {
         setSearchHovered(false);
     };
-    
+
 
     return (
         <div className="QF-bg">
@@ -89,8 +93,9 @@ const MyAccount = () => {
                 </div>
 
                 <ul>
-                    {clubList.map((item, label) => (
-                        <li className="MA-club-text" onClick={() => {navigate(item.value)}}>{item.value}</li>                    ))}
+                    {clubList.map((item, index) => (
+                        <li key={index} className="MA-club-text" onClick={() => {navigate(item)}}>{item}</li>
+                    ))}
                 </ul>
             </div>
 
