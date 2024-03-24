@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import Navbar from "../Navbar/Navbar"
 import "./CreatePost.css"
+import { initializePost } from "../functions/Post"
+import { auth } from "../firebase"
+import { onAuthStateChanged } from "firebase/auth"
 
 const CreatePost = () => {
     const navigate = useNavigate();
@@ -18,7 +21,17 @@ const CreatePost = () => {
     };
 
     const CreateAPost = () => {
-        // TODO: write to backend
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                const displayName = user.displayName;
+                const currDate = new Date(); // board, author, club, date, text, title
+                initializePost(tag, displayName, "", currDate, content, title);
+            } else {
+                console.error("Not logged in.")
+            }
+        })
+
+        return null;
     }
 
     useEffect(() => {

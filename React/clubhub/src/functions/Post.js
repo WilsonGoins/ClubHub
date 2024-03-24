@@ -1,10 +1,11 @@
 import { firestore } from '../firebase';
 import * as fs from "firebase/firestore";
 
-const initializePost = async (author, club, date, text, title) => {
+const initializePost = async (board, author, club, date, text, title) => {
     try {
         const postsRef = fs.collection(firestore, "forumPosts");
         await fs.addDoc(postsRef, {
+            board: board,
             author: author,
             club: club,
             comments: [],
