@@ -9,6 +9,7 @@ import InformationHub from "../InformationHub/InformationHub"
 import Test from "../Test/Test"
 import EventSchedule from '../EventSchedule/EventSchedule';
 import QuestionForum from '../QuestionForum/QuestionForum';
+import PostPage from "../PostPage/PostPage"
 
 
 function App() {
@@ -23,6 +24,8 @@ function App() {
                 <Route path="/test" exact element={<Test />} />
                 <Route path="/questionforum" exact element={< QuestionForum/>} />
                 <Route path="/eventschedule" exact element={<EventSchedule />} />
+                <Route path="/post" exact element={<PostPage />} />
+                
             </Routes>
         </BrowserRouter>
     );

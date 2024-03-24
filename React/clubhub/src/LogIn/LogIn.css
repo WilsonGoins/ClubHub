@@ -85,7 +85,7 @@
     transform: translate(-50%, -50%);
     background-color: red;
     animation: LIslideIn 0.5s forwards; /* Apply the animation */
-}   
+}
 
 @keyframes LIslideIn {
     from {
