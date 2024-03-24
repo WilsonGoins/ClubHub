@@ -3,14 +3,25 @@ import { useNavigate } from "react-router-dom"
 import Navbar from "../Navbar/Navbar"
 import "./MyAccount.css"
 import UserImage from "./UserImage.jpg"
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const MyAccount = () => {
     const navigate = useNavigate();
     const [searchHovered, setSearchHovered] = useState(false);
     const [clubToAdd, setClubToAdd] = useState("");
-    const name = "Wilson Goins";
-    const email = "wilson.goins@ufl.edu";
     const clubList = ["OSC", "SASE", "SwampHacks", "LinearLovers"];     // TODO: get club list from database
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            setName(user.displayName);
+            setEmail(user.email);
+        } else {
+            console.log("buggg");
+        }
+    });
 
     const searchButtonStyle = {
         backgroundColor: searchHovered ? '#A0FFDD' : '#E9967A',
