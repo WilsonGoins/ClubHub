@@ -249,6 +249,7 @@ const QuestionForum = () => {
                     </div>
 
                     <div className="CF-clubs-container">
+                        <div style={{marginTop: "60%"}}></div>
                         {queryRes.map((item, index) => (
                             <div key={index}>
                                 <button className="CF-clubs-button btn btn-outline-success NVB-text-color" style={navItemStyles.opportunities}
@@ -257,22 +258,9 @@ const QuestionForum = () => {
                                 </button>
                             </div>
                         ))}
-
-                        {/* {testArray.map((club, title) => (
-                            <div key={club}>
-                                <button className="CF-clubs-button btn btn-outline-success NVB-text-color" style={navItemStyles}
-                                    onClick={() => {{setIsSelected(true)}; {setSelectedClub(club.title)}}}>
-                                    <p>{club.title}</p>
-                                </button>
-                            </div>
-                        ))} */}
-                    </div>
-                
-
+                    </div>  
                 </>
             )}
-
-
         </>
     )
 }
