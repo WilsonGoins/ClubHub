@@ -5,6 +5,8 @@ import DandelionAPI from "../DandelionAPI"
 import "./QuestionForum.css"
 import {onAuthStateChanged } from "firebase/auth"
 import { auth } from '../firebase';
+import { collection, query, where, orderBy, getDocs, forumPosts } from "firebase/firestore";
+import { firestore } from '../firebase';
 
 const QuestionForum = () => {
     const navigate = useNavigate();
@@ -20,7 +22,9 @@ const QuestionForum = () => {
         opportunities: false
     });
     const [userQuery, setUserQuery] = useState("")
-    const [queryRes, setQueryRes] = useState([]);
+    const [postID, setPostID] = useState("");
+    const [postTitle, setPostTitle] = useState("");
+    const [postList, setpostList] = useState([]);    const [queryRes, setQueryRes] = useState([]);
     const testArray = [
         { title: "OSC", /* other properties */ },
         { title: "SASE", /* other properties */ },
@@ -97,8 +101,10 @@ const QuestionForum = () => {
         }));
     };
 
-    const getResults = async (event) => {
+    const getResults = async (event, userQuery) => {
         event.preventDefault();
+        fetchData(event, userQuery);
+        // postList is the list of dicts
 
         setSearched(true);
 
@@ -123,20 +129,46 @@ const QuestionForum = () => {
         // });
         setQueryRes(results);
     };
+    const fetchData = async () => {
 
+        const postsRef = collection(firestore, "forumPosts");
+        let q = query(postsRef);
+
+        const querySnapshot = await getDocs(q);
+
+        querySnapshot.forEach((doc) => {
+            const res = doc.data();
+            setPostID(doc.id);
+            setPostTitle(res.title);
+            console.log(doc.id,res.title)
+            console.log(postID,postTitle)
+
+            const dict = {
+                "ID": doc.id,
+                "Title": res.title,
+            };
+
+            postList.push(dict);
+        });
+    };
     return (
         <>
             <Navbar />
 
             {/* search bar */}
-            <form className="QF-search-bar d-flex" role="search" onSubmit={(event) => {getResults(event)}}>
-                <input className="form-control me-2" type="search" placeholder="Search for a Post" aria-label="Search" onChange={(event) => {setUserQuery(event.target.value)}} value={userQuery}
-                     onInput={(event) => {
-                        if (event.target.value === '') {
-                            setSearched(false);
-                        }
-                    }} />
-                <button className="btn btn-outline-success  NVB-text-color" style={navItemStyles.search} onMouseEnter={() => handleNavItemHover('search')} onMouseLeave={() => handleNavItemMouseLeave('search')} type="submit">
+            <form className="QF-search-bar d-flex" role="search" onSubmit={(event) => {getResults(event, userQuery)}}>
+                <input className="form-control me-2" type="search" placeholder="Search for a Post" aria-label="Search"
+                       onChange={(event) => {
+                           setUserQuery(event.target.value)
+                       }} value={userQuery}
+                       onInput={(event) => {
+                           if (event.target.value === '') {
+                               setSearched(false);
+                           }
+                       }}/>
+                <button className="btn btn-outline-success  NVB-text-color" style={navItemStyles.search}
+                        onMouseEnter={() => handleNavItemHover('search')}
+                        onMouseLeave={() => handleNavItemMouseLeave('search')} type="submit">
                     Search
                 </button>
             </form>
