@@ -16,7 +16,7 @@ const MyAccount = () => {
         console.log(data.name);
     }
 
-    const AddClub = async () => { // TODO: write to backend
+    const AddClub = async () => {
         try {
             const newClub = await findClub(clubToAdd)
             await addClub(email, newClub);

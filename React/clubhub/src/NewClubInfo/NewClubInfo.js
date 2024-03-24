@@ -34,7 +34,7 @@ const NewClubInfo = () => {
 
     const CreateClub = () => {
         initializeClub(clubName, description, president, vicePresident, treasurer);
-        navigate("/home")
+        navigate("/home");
     }
 
     useEffect(() => {
