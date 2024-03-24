@@ -8,7 +8,9 @@ const MyAccount = () => {
     const navigate = useNavigate();
     const [searchHovered, setSearchHovered] = useState(false);
     const [clubToAdd, setClubToAdd] = useState("");
-    const clubList = ["OSC", "SASE", "SwampHacks", "LinearLovers"]      // TODO: get club list from database
+    const name = "Wilson Goins";
+    const email = "wilson.goins@ufl.edu";
+    const clubList = ["OSC", "SASE", "SwampHacks", "LinearLovers"];     // TODO: get club list from database
 
     const searchButtonStyle = {
         backgroundColor: searchHovered ? '#A0FFDD' : '#E9967A',
@@ -53,14 +55,14 @@ const MyAccount = () => {
             {/* title */}
             <div className="MA-name-container">
                 <div className="MA-name-text">
-                    Wilson Goins
+                    {name}
                 </div>
             </div>
 
             {/* email */}
             <div className="MA-email-container">
                 <div className="MA-name-text">
-                    wilson.goins@ufl.edu
+                    {email}
                 </div>
             </div>
 
