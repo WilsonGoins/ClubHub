@@ -40,11 +40,11 @@ const ClubFinder = () => {
                     </div>
 
                     <div className="CF-clubs-container">
-                        {testArray.map((club, title) => (
+                        {clubsRes.map((club, name) => (
                             <div key={club}>
                                 <button className="CF-clubs-button btn btn-outline-success NVB-text-color" style={navItemStyles}
-                                    onClick={() => {{setIsSelected(true)}; {setSelectedClub(club.title)}}}>
-                                    <p>{club.title}</p>
+                                    onClick={() => {{setIsSelected(true)}; {setSelectedClub(club.name)}}}>
+                                    <p>{club.name}</p>
                                 </button>
                             </div>
                         ))}
