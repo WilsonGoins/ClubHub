@@ -1,0 +1,41 @@
+.CP-post-maker-container {
+    position: absolute;
+    left: 10vw;
+    top: 25%;
+    width: 80vw;
+    height: 60%;
+}
+
+.CP-post-title-container {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    width: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.CP-post-tags-container {
+    position: absolute;
+    top: 37.5%;
+    left: 50%;
+    width: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.CP-post-text-container {
+    position: absolute;
+    top: 42.5%;
+    left: 50%;
+    width: 50%;
+    height: 50%;
+    transform: translate(-50%, 0%);
+}
+
+.CP-create-post-btn {
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    Width: 10%;
+    transform: translate(-50%, -50%);
+    font-size: 150%;
+}
