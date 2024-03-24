@@ -9,6 +9,7 @@ import { auth } from '../firebase';
 const QuestionForum = () => {
     const navigate = useNavigate();
     const [searchHovered, setSearchHovered] = useState(false);
+    const [searchHovered2, setSearchHovered2] = useState(false);
     const [userQuery, setUserQuery] = useState("")
     const [queryRes, setQueryRes] = useState([]);
     const [simScore, setSimScore] = useState(0.0);
@@ -17,6 +18,13 @@ const QuestionForum = () => {
         backgroundColor: searchHovered ? '#A0FFDD' : '#E9967A',
         borderColor: searchHovered ? '#A0FFDD' : '#A0FFDD',
         color: searchHovered ? '#E9967A' : '#FFFFFF',
+        transition: 'background-color 0.3s, border-color 0.3s, color 0.3s'
+    };
+
+    const searchButtonStyle2 = {
+        backgroundColor: searchHovered2 ? '#A0FFDD' : '#E9967A',
+        borderColor: searchHovered2 ? '#A0FFDD' : '#A0FFDD',
+        color: searchHovered2 ? '#E9967A' : '#FFFFFF',
         transition: 'background-color 0.3s, border-color 0.3s, color 0.3s'
     };
 
@@ -31,8 +39,16 @@ const QuestionForum = () => {
         setSearchHovered(true);
     };
 
+    const handleSearchHover2 = () => {
+        setSearchHovered2(true);
+    };
+
     const handleSearchMouseLeave = () => {
         setSearchHovered(false);
+    };
+
+    const handleSearchMouseLeave2 = () => {
+        setSearchHovered2(false);
     };
 
     const getResults = async (event) => {           // TODO: jake compare to database, the function
@@ -69,20 +85,31 @@ const QuestionForum = () => {
 
             {/* search bar */}
             <form className="QF-search-bar d-flex" role="search" onSubmit={(event) => {getResults(event)}}>
-                <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" onChange={(event) => {setUserQuery(event.target.value)}} value={userQuery} />
+                <input className="form-control me-2" type="search" placeholder="Search for a Post" aria-label="Search" onChange={(event) => {setUserQuery(event.target.value)}} value={userQuery} />
                 <button className="btn btn-outline-success  NVB-text-color" style={searchButtonStyle} onMouseEnter={handleSearchHover} onMouseLeave={handleSearchMouseLeave} type="submit">
                     Search
                 </button>
             </form>
 
+            {/* title */}
             <div className="QF-title-container">
                 <div className="QF-title-text">
                    Question Forum
                 </div>
             </div>
+
+            {/* create post button */}
+            <button className="QF-create-btn btn btn-outline-success NVB-text-color" style={searchButtonStyle2} onMouseEnter={handleSearchHover2} onMouseLeave={handleSearchMouseLeave2}
+                onClick={() => {navigate("/createpost")}}>
+                Create a Post
+            </button>
+
+            {/* REMOVE later */}
             <div className="QF-title-text" style={{position: "absolute", top: "50%", left: "30%"}}>
                    Similarity Score: {simScore}
             </div>
+
+
         </div>
     )
 }

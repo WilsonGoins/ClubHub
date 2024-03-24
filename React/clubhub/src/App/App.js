@@ -5,11 +5,11 @@ import CreateAccount from "../CreateAccount/CreateAccount"
 import Home from "../Home/Home"
 import LogIn from "../LogIn/LogIn"
 import InformationHub from "../InformationHub/InformationHub"
-
 import Test from "../Test/Test"
 import EventSchedule from '../EventSchedule/EventSchedule';
 import QuestionForum from '../QuestionForum/QuestionForum';
 import PostPage from "../PostPage/PostPage"
+import CreatePost from '../CreatePost/CreatePost';
 
 
 function App() {
@@ -25,6 +25,8 @@ function App() {
                 <Route path="/questionforum" exact element={< QuestionForum/>} />
                 <Route path="/eventschedule" exact element={<EventSchedule />} />
                 <Route path="/post" exact element={<PostPage />} />
+                <Route path="/createpost" exact element={<CreatePost />} />
+
                 
             </Routes>
         </BrowserRouter>
