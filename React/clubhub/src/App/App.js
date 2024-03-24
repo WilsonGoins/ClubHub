@@ -11,6 +11,7 @@ import QuestionForum from '../QuestionForum/QuestionForum';
 import PostPage from "../PostPage/PostPage"
 import CreatePost from '../CreatePost/CreatePost';
 import MyAccount from '../MyAccount/MyAccount';
+import NewClubInfo from '../NewClubInfo/NewClubInfo';
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
                 <Route path="/post" exact element={<PostPage />} />
                 <Route path="/createpost" exact element={<CreatePost />} />
                 <Route path="/myaccount" exact element={<MyAccount />} />
+                <Route path="/newclubinfo" exact element={<NewClubInfo />} />
         
             </Routes>
         </BrowserRouter>

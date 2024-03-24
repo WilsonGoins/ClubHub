@@ -21,6 +21,10 @@ const MyAccount = () => {
 
     const AddClub = () => { // TODO: write to backend
        console.log(clubToAdd);
+       
+       if (true) {
+            navigate("/newclubinfo");
+       }
     }
 
     useEffect(() => {
