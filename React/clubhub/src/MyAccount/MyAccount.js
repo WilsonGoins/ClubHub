@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom"
 import Navbar from "../Navbar/Navbar"
 import "./MyAccount.css"
 import UserImage from "./UserImage.jpg"
-import { initializeUserProfile, retrieveUserData, retrieveUserProfile } from "../functions/User"
+import { initializeUserProfile, retrieveUserData, retrieveUserProfile, addClub } from "../functions/User"
+import { findClub} from "../functions/Club"
 import { auth } from "../firebase"
 import { onAuthStateChanged } from "firebase/auth"
 
@@ -11,9 +12,18 @@ const MyAccount = () => {
 
     const fetchData = async (targetEmail) => {
         const data = await retrieveUserProfile(targetEmail);
-        setClubList([]);
-        // setClubList(data.clubs);
+        setClubList(data.clubs);
         console.log(data.name);
+    }
+
+    const AddClub = async () => { // TODO: write to backend
+        try {
+            const newClub = await findClub(clubToAdd)
+            await addClub(email, newClub);
+        } catch (error) {
+            console.error("Error found: ", error);
+            navigate("/newclubinfo");
+        }
     }
 
     useEffect(() => {
@@ -28,6 +38,9 @@ const MyAccount = () => {
                 fetchData(user.email);
             }
         })
+        if (clubToAdd != "") {
+
+        }
     }, []);
 
     const navigate = useNavigate();
@@ -35,12 +48,8 @@ const MyAccount = () => {
     const [clubToAdd, setClubToAdd] = useState("");
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
-    const [clubList, setClubList] = useState([]);     
-
-    const AddClub = () => { // TODO: write to backend
-        console.log(clubToAdd);
-        navigate("/newclubinfo");
-    }
+    const [clubList, setClubList] = useState([]);
+    const [clubFound, foundState] = useState(null);
 
     const searchButtonStyle = {
         backgroundColor: searchHovered ? '#A0FFDD' : '#E9967A',
@@ -48,6 +57,8 @@ const MyAccount = () => {
         color: searchHovered ? '#E9967A' : '#FFFFFF',
         transition: 'background-color 0.3s, border-color 0.3s, color 0.3s'
     };
+
+    
 
     const handleSearchHover = () => {
         setSearchHovered(true);

@@ -74,7 +74,7 @@ const NewClubInfo = () => {
 
                 <div>
                     <label className="NCI-label">
-                        Is This Club Here?
+                        Is This Club Not Here?
                     </label>
                     <input className="NCI-checkbox" type="checkbox" id="is_new" name="is_new" onChange={handleCheckbox} value={newClub} />
                 </div>

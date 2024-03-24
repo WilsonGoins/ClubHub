@@ -42,6 +42,7 @@ const findClub = async (targetName) => { // returns document itself
         return snapshot.docs[0]; // returning first item of array
     } catch (error) {
         console.error("Unexpected error in findClub: ", error);
+        throw new Error("Club not found!");
     }
 }
 
