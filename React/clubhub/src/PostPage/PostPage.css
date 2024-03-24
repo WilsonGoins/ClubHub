@@ -10,60 +10,44 @@ body {
 .PP-search-bar {
     position: absolute;
     width: 50%;
-    top: 25%;
+    top: 15%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-.PP-header-container {
+.PP-title-container {
     position: absolute;
-    top: 15%;
-    width: 70%;
-    left: 60%;
+    top: 29%;
+    left: 50%;
+    text-align: center;
     transform: translate(-50%, -50%);
 }   
 
-.PP-header-text {
+.PP-title-text {
     font-family: 'Montserrat';
     font-size: 400%;
     font-weight: bold;
-    color: #A0FFDD;
-}
-
-.PP-title-container {
-    position: absolute;
-    top: 34%;
-    left: 5%;
-    border-radius: 10px;
-    padding: 10px;
-    background-color: darksalmon;
-}
-
-.PP-title-text {
-    font-family: 'Montserrat';
-    font-size: 200%;
-    font-weight: bold;
-    color: #A0FFDD;
+    color: white;
 }
 
 .PP-user-text {
     font-family: 'Montserrat';
-    font-size: 65%;
-    font-weight: bold;
-    color: #A0FFDD;
+    font-size: 100%;
+    color: white;
 }
 
-.PP-tag-text {
+.PP-forum-text {
     font-family: 'Montserrat';
-    font-size: 50%;
+    font-size: 100%;
     font-weight: bold;
-    color: #A0FFDD;
+    color: white;
 }
 
 .PP-post-container {
     position: absolute;
     width: 90%;
-    top: 47%;
+
+    top: 40%;
     left: 5%;
     border-radius: 10px;
     padding: 10px;
@@ -76,18 +60,28 @@ body {
     color: black;
 }
 
-.PP-comment-container {
+.PP-comment-section-container {
     position: absolute;
     width: 90%;
-    top: 60%;
+    top: 85%;
     left: 5%;
     border-radius: 10px;
     padding: 10px;
     background-color: darksalmon;
 }
 
-.IH-comment-head-container {
+.PP-comment-title-text {
+    font-family: 'Montserrat';
+    font-size: 200%;
+    color: white;
+}
+
+.PP-comment-container {
     position: relative;
-    margin-top: 2.5%;
-    
+    margin-top: 2%;
+    width: 90%;
+    left: 5%;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #5bd1a8;
 }

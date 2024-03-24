@@ -6,7 +6,7 @@ import "./PostPage.css"
 const PostPage = () => {
     const [searchHovered, setSearchHovered] = useState(false);
     const [postUser, setPostUser] = useState("");
-    const [postTags, setPostTags] = useState("");
+    const [postForum, setPostForum] = useState("");
     const [postTitle, setPostTitle] = useState("");
     const [postText, setPostText] = useState("");
     const navItemStyle = {
@@ -28,9 +28,9 @@ const PostPage = () => {
         const title = "Example Post"
         setPostTitle(title);
     };
-    const getPostTags = () => {
-        const tags = "Comp Sci, Comp E"
-        setPostTags(tags);
+    const getPostForum = () => {
+        const forum = "Announcement"
+        setPostForum(forum);
     };
     const getPostUser = () => {
         const user = "xX_Lazzy_Xx"
@@ -42,7 +42,7 @@ const PostPage = () => {
     };
     useEffect(() => {
         getPostTitle();
-        getPostTags();
+        getPostForum();
         getPostUser();
         getPostText();
     }, []);
@@ -52,24 +52,17 @@ const PostPage = () => {
             <Navbar/>
         
             <form class="d-flex PP-search-bar" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                <input class="form-control me-2" type="search" placeholder="Search for another post" aria-label="Search" />
                 <button class="btn btn-outline-success  NVB-text-color" type="submit" style={navItemStyle} onMouseEnter={handleSearchHover} onMouseLeave={handleSearchMouseLeave}>Search</button>
             </form>
-
-            <div className="PP-header-container">
-                <div className="PP-header-text">
-                    Search for a new post
-                </div>
-            </div>
 
             <div className="PP-title-container">
                 <div className="PP-title-text">
                     {postTitle}
                 </div>
-                <div className="PP-tag-text">
-                    Tags: {postTags}
+                <div className="PP-forum-text">
+                    {postForum}
                 </div>
-
             </div>
 
             <div className="PP-post-container">
@@ -83,6 +76,33 @@ const PostPage = () => {
                 </div>
             </div>
 
+            <div className="PP-comment-section-container">
+                <div className="PP-comment-title-text">
+                    Comments:
+                </div>
+                <div className="PP-comment-container">
+                    Nick Says:
+                    <br />
+                    WOmen? NeV3r heArD oV3r.
+                </div>
+                <div className="PP-comment-container">
+                    Jake Says:
+                    <br />
+                    Crazy? I was crazy once. They locked me in a room. A rubber room. A rubber room with rats. And rats make my crazy. Crazy? I was crazy once. They locked me in a room. A rubber room. A rubber room with rats. And rats make my crazy. Crazy? I was crazy once. They locked me in a room. A rubber room. A rubber room with rats. And rats make my crazy. Crazy? I was crazy once. They locked me in a room. A rubber room. A rubber room with rats. And rats make my crazy. Crazy? I was crazy once. They locked me in a room. A rubber room. A rubber room with rats. And rats make my crazy. Crazy? I was crazy once. They locked me in a room. A rubber room. A rubber room with rats. And rats make my crazy.
+                </div>
+                <div className="PP-comment-container">
+                    Wilson Says:
+                    <br />
+                    Okay Guys.
+                </div>
+                <div className="PP-comment-container">
+                    Eddy Says:
+                    <br />
+                    Poggers!
+                </div>
+                <br />
+                <br />
+            </div>
         </div>
     )
 }
