@@ -31,3 +31,109 @@
     left: 87%;
     font-size: 150%;
 }
+
+.QF-forum-announcements {
+    position: absolute;
+    width: 50%;
+    top: 45%;
+    left: 50%;
+    text-align: left;
+    font-size: 150%;
+    transform: translate(-50%, -50%);
+}
+
+.QF-forum-rules {
+    position: absolute;
+    width: 50%;
+    top: 52.5%;
+    left: 50%;
+    text-align: left;
+    font-size: 150%;
+    transform: translate(-50%, -50%);
+}
+
+.QF-forum-events {
+    position: absolute;
+    width: 50%;
+    top: 70%;
+    left: 50%;
+    text-align: left;
+    font-size: 150%;
+    transform: translate(-50%, -50%);
+}
+
+.QF-forum-advertisements {
+    position: absolute;
+    width: 50%;
+    top: 77.5%;
+    left: 50%;
+    text-align: left;
+    font-size: 150%;
+    transform: translate(-50%, -50%);
+}
+
+.QF-forum-opportunities {
+    position: absolute;
+    width: 50%;
+    top: 85%;
+    left: 50%;
+    text-align: left;
+    font-size: 150%;
+    transform: translate(-50%, -50%);
+}
+
+.QF-forum-title-container-site-wide {
+    position: absolute;
+    width: 50%;
+    top: 39%;
+    left: 50.3%;
+    text-align: left;
+    font-size: 150%;
+    transform: translate(-50%, -50%);
+}
+
+.QF-forum-title-container-general {
+    position: absolute;
+    width: 50%;
+    top: 64%;
+    left: 50.3%;
+    text-align: left;
+    font-size: 150%;
+    transform: translate(-50%, -50%);
+}
+
+.QF-forum-title-text {
+    font-family: 'Montserrat';
+    font-size: 120%;
+    font-weight: bold;
+    color: white;
+}
+
+.QF-forum-top-results {
+    position: absolute;
+    width: 50%;
+    top: 35%;
+    left: 50%;
+    text-align: left;
+    font-size: 150%;
+    transform: translate(-50%, -50%);
+}
+
+.QF-results-container {
+    position: absolute;
+    width: 100%;
+    top: 69.69%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.QF-results-forums {
+    position: relative;
+    margin-top: 2%;
+    width: 50%;
+    top: 45%;
+    left: 50%;
+    text-align: left;
+    font-size: 150%;
+    transform: translate(-50%, -50%);
+}

@@ -113,7 +113,7 @@ const Navbar = () => {
                     <li className="nav-item">
                     <a className="nav-link NVB-text-color" style={navItemStyles.questionForum} onMouseEnter={() => handleNavItemHover('questionForum')} onMouseLeave={() => handleNavItemMouseLeave('questionForum')}
                         onClick={() => {navigationFunction("/questionforum")}}>
-                        Question Forum
+                        Question Forums
                     </a>
                     </li>
                     <li className="nav-item">
