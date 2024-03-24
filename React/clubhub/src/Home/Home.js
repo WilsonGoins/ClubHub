@@ -3,14 +3,19 @@ import { useNavigate } from "react-router-dom"
 import Navbar from "../Navbar/Navbar"
 import "./Home.css"
 import PlazaOfTheAmericas from "./PlazaOfTheAmericas.png"
+import {onAuthStateChanged } from "firebase/auth"
+import { auth } from '../firebase';
+
 
 const Home = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (!true) {     // TODO: check if they are NOT logged in                                IMPORTANT
+
+        console.log(localStorage)
+        if (localStorage.getItem('LoggedIn') === "false") {     // TODO: check if they are NOT logged in                                IMPORTANT
             navigate("/")
-        }
+            }
     }, []);
 
     return (

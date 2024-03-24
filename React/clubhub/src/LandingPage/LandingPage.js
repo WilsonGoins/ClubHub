@@ -4,6 +4,7 @@ import Navbar from "../Navbar/Navbar"
 import "./LandingPage.css"
 import PlazaOfTheAmericas from "./PlazaOfTheAmericas.png"
 
+console.log(localStorage)
 const LandingPage = () => {
     const navigate = useNavigate();
 

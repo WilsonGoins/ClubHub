@@ -6,6 +6,9 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
 import { useNavigate } from "react-router-dom";
 
+localStorage.setItem('LoggedIn', false); // true or false
+
+
 const LogIn = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -20,6 +23,7 @@ const LogIn = () => {
                 .then(() => {
                     // Navigate to home page after successful login
                     navigate("/home");
+                    localStorage.setItem('LoggedIn', true);
                 })
                 .catch(error => {
                     // Handle login errors

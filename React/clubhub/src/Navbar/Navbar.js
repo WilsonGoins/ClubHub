@@ -1,6 +1,8 @@
 import React, {useState} from "react"
 import {useNavigate} from "react-router-dom";
 import "./Navbar.css"
+import {onAuthStateChanged } from "firebase/auth"
+import { auth } from '../firebase';
 
 const Navbar = () => {
     const navigate = useNavigate();
@@ -14,20 +16,28 @@ const Navbar = () => {
     });
 
     const navigationFunction = (_page) => {
+        console.log(_page)
+        console.log(localStorage.getItem('LoggedIn'))
         if (_page === "/home") {      // different if block because this is for clicking "ClubHub" which should go back to landing page
-            if (true) {     // TODO: replace with a check if they are logged in         IMPORTANT
-                navigate("/home");
-            } else {
-                navigate("/");
+                console.log(_page)
+            if (localStorage.getItem('LoggedIn') === 'true') {
+                    navigate("/home");
+                } else {
+                    navigate("/");
+                }
             }
-        } else {
-            if (false) {     // TODO: replace with if they are logged in                IMPORTANT
-                navigate(_page);
-            } else {        
-                navigate("/createaccount");
+        else {
+            console.log('not /home')
+            console.log(_page)
+            console.log(localStorage.getItem('LoggedIn'))
+            if (localStorage.getItem('LoggedIn') == "true") {
+                    navigate(_page);
+            } else {
+                    console.log("hello");
+                    navigate("/createaccount");
+                }
             }
         }
-    }
 
     const searchButtonStyle = {
         backgroundColor: searchHovered ? '#A0FFDD' : '#E9967A',
@@ -123,7 +133,7 @@ const Navbar = () => {
                         <li><a className="dropdown-item" href="#">Give Praise and Admiration</a></li>
                     </ul>
                     </li>
-                    
+
                 </ul>
                 <form className="d-flex" role="search">
                     <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
