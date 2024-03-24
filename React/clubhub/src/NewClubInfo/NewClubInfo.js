@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 import Navbar from "../Navbar/Navbar"
 import "./NewClubInfo.css"
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { initializeClub } from "../functions/Club";
+import { initializeClub, retrieveAllClubs } from "../functions/Club";
 
 
 const NewClubInfo = () => {
@@ -18,11 +18,11 @@ const NewClubInfo = () => {
     const [description, setDescription] = useState("");
     const auth = getAuth();
 
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-            // todo: get list of all clubs from database, I don't think through this though
-        }
-    });
+    // onAuthStateChanged(auth, (user) => {
+    //     if (user) {
+    //         // todo: get list of all clubs from database, I don't think through this though
+    //     }
+    // });
 
 
     const searchButtonStyle = {
@@ -41,6 +41,12 @@ const NewClubInfo = () => {
         if (localStorage.getItem('LoggedIn') === "false") {
             navigate("/")
         }
+        const fetchData = async () => {
+            const list = await retrieveAllClubs();
+            setClubList(list);
+            console.log(list);
+        }
+        fetchData();
     }, []);
 
     const handleSearchHover = () => {
@@ -71,7 +77,7 @@ const NewClubInfo = () => {
             {/* is your club here? */}          
             <div className="NCI-club-container mr-3">
                  <select style={{width: "50%"}}> 
-                    {clubList.map((option, index) => (<option key={index} value={option.value}>{option.label}</option>))}
+                    {clubList.map((option, index) => (<option key={index} value={option.name}>{option.name}</option>))}
                 </select> 
 
                 <div>

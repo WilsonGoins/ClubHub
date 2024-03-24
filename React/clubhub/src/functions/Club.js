@@ -48,6 +48,23 @@ const findClub = async (targetName) => { // returns document itself
     }
 }
 
+const retrieveAllClubs = async () => {
+    try {
+        var arr = [];
+
+        const clubsRef = fs.collection(firestore, "clubs");
+        const clubs = await fs.getDocs(clubsRef);
+
+        clubs.forEach((doc) => {
+            const clubData = doc.data();
+            arr.push(clubData);
+        });
+        return arr;
+    } catch (error) {
+        console.error("Unexpected error in retrieveAllClubs: ", error);
+    }
+}
+
 const editClubName = async (targetName, newName) => { // edits club name directly
     try {
         const clubID = await findClub(targetName)
@@ -58,4 +75,4 @@ const editClubName = async (targetName, newName) => { // edits club name directl
     }
 }
 
-export { createClub, initializeClub, findClub, editClubName };
+export { createClub, initializeClub, findClub, editClubName, retrieveAllClubs };
