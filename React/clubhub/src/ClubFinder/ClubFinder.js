@@ -3,8 +3,19 @@ import { useNavigate } from "react-router-dom"
 import Navbar from "../Navbar/Navbar"
 import "./ClubFinder.css"
 import { useParams } from "react-router-dom"
+import { retrieveAllClubs } from "../functions/Club"
 
 const ClubFinder = () => {
+
+    const fetchData = async () => {
+        const list = await retrieveAllClubs()
+        setClubsRes(list);
+    }
+
+    useEffect(() => {
+        fetchData();
+    })
+
     const navigate = useNavigate();
     const [isSelected, setIsSelected] = useState(false);
     const [selectedClub, setSelectedClub] = useState("")
