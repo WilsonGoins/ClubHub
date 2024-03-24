@@ -1,3 +1,3 @@
-const DandelionAPI = '9aab7ebcc94b4e53a0d2598d1f918d48';
+const DandelionAPI = '320df5a90a0e4f8f843b35e8ce0d7e57';
 
 export default DandelionAPI;

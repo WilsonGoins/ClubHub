@@ -18,7 +18,7 @@ const ClubFinder = () => {
 
     const navigate = useNavigate();
     const [isSelected, setIsSelected] = useState(false);
-    const [selectedClub, setSelectedClub] = useState("")
+    const [selectedClub, setSelectedClub] = useState({});
     const [clubsRes, setClubsRes] = useState([]);
     const testArray = [
         { title: "Open Source Club", /* other properties */ },
@@ -55,7 +55,7 @@ const ClubFinder = () => {
                         {clubsRes.map((club, name) => (
                             <div key={club}>
                                 <button className="CF-clubs-button btn btn-outline-success NVB-text-color" style={navItemStyles}
-                                    onClick={() => {{setIsSelected(true)}; {setSelectedClub(club.name)}}}>
+                                    onClick={() => {{setIsSelected(true)}; {setSelectedClub(club)}}}>
                                     <p>{club.name}</p>
                                 </button>
                             </div>
@@ -81,7 +81,7 @@ const ClubFinder = () => {
 
                     <div className="CF-title-container">
                         <div className="CF-title-text">
-                            {selectedClub}
+                            {selectedClub.name}
                         </div>
                     </div>
 
@@ -89,17 +89,17 @@ const ClubFinder = () => {
                         <div className="CF-club-role-text">
                             President:
                             <br />
-                            Jonathan
+                            {selectedClub.president}
                             <br />
                             <br />
                             Vice-President:
                             <br />
-                            Anton
+                            {selectedClub.vicepresident}
                             <br />
                             <br />
                             Treasurer:
                             <br />
-                            Grayson
+                            {selectedClub.treasurer}
                             <br />
                         </div>
                     </div>
@@ -112,7 +112,7 @@ const ClubFinder = () => {
                         </div>
 
                         <div className="CF-body-text">
-                            This is an example post. Reading this won't get you much information, and reading it again you'll notice that no question is asked. This is intention. This post has no purpose other than being a placeholder of users' beautiful words. This is an example post. Reading this won't get you much information, and reading it again you'll notice that no question is asked. This is intention. This post has no purpose other than being a placeholder of users' beautiful words. This is an example post. Reading this won't get you much information, and reading it again you'll notice that no question is asked. This is intention. This post has no purpose other than being a placeholder of users' beautiful words.
+                            {selectedClub.bio}
                         </div>
                     </div>
 
