@@ -117,15 +117,24 @@ const QuestionForum = () => {
 
             
             const endpoint = `https://api.dandelion.eu/datatxt/sim/v1/?text1=${userQuery}&text2=${compareStr}&token=${DandelionAPI}`;
-            fetch(endpoint).then(response => response.json()).then(data => {
-                const similarity = data.similarity; // Assuming 'similarity' is the key in the response JSON object
-                const temp = {"title": post.Title, "id": post.ID, "simScore": similarity};
-                results.push(temp);
-                console.log(temp);
+            fetch(endpoint)
+            .then(response => {
+                if (response.status === 400) {
+                    results.push({"title": post.Title, "id": post.ID, "simScore": 0.00});
+                } else {
+                    const data = response.json();
+                    const similarity = data.similarity;
+                    results.push({"title": post.Title, "id": post.ID, "simScore": similarity});
+                }
             })
+            // .then(response => response.json()).then(data => {
+            //     const similarity = data.similarity; // Assuming 'similarity' is the key in the response JSON object
+            //     const temp = {"title": post.Title, "id": post.ID, "simScore": similarity};
+            //     results.push(temp);
+            // })
         });
 
-        // console.log(results);
+        console.log(results);
             
         results.sort((a, b) => {
             return a.simScore - b.simScore;
@@ -239,15 +248,24 @@ const QuestionForum = () => {
                         </div>
                     </div>
 
-                    <div className="QF-results-container">
-                        {queryRes.slice(0, 10).map((item, index) => (
+                    <div className="CF-clubs-container">
+                        {queryRes.map((item, index) => (
                             <div key={index}>
-                                <button className="QF-results-forums btn btn-outline-success NVB-text-color" style={navItemStyles.opportunities}
+                                <button className="CF-clubs-button btn btn-outline-success NVB-text-color" style={navItemStyles.opportunities}
                                     onClick={() => {navigate("/post")}}>
                                     {item.title}
                                 </button>
                             </div>
                         ))}
+
+                        {/* {testArray.map((club, title) => (
+                            <div key={club}>
+                                <button className="CF-clubs-button btn btn-outline-success NVB-text-color" style={navItemStyles}
+                                    onClick={() => {{setIsSelected(true)}; {setSelectedClub(club.title)}}}>
+                                    <p>{club.title}</p>
+                                </button>
+                            </div>
+                        ))} */}
                     </div>
                 
 
