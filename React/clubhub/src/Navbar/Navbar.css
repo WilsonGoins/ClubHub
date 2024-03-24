@@ -7,5 +7,9 @@
     cursor: pointer;
 }
 
+.NVB-welcome {
+    display: flex;
+    margin-left: 20%;
+}
 
 

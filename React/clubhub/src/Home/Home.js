@@ -48,9 +48,9 @@ const Home = () => {
                 <button type="button" class="btn btn-lg NVB-bg-color LP-create-btn" onClick={() => {navigate("/questionforum")}}>Question Forum</button>
             </div>
 
-            {/* Event Scheudle */}
+            {/* Club Finder */}
             <div>
-                <button type="button" class="btn btn-lg NVB-bg-color LP-learn-btn" onClick={()=> {navigate("/eventschedule")}}>Event Schedule</button>
+                <button type="button" class="btn btn-lg NVB-bg-color LP-learn-btn" onClick={()=> {navigate("/clubfinder")}}>Find Clubs</button>
             </div>
         </div>
     )

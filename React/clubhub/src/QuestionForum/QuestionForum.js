@@ -81,7 +81,6 @@ const QuestionForum = () => {
 
 
     useEffect(() => {
-        console.log(localStorage)
         if (localStorage.getItem('LoggedIn') === "false") {     // TODO: check if they are NOT logged in                                IMPORTANT
             navigate("/")
         }
@@ -103,32 +102,37 @@ const QuestionForum = () => {
 
     const getResults = async (event, userQuery) => {
         event.preventDefault();
-        fetchData(event, userQuery);
-        // postList is the list of dicts
 
+        await fetchData(event, userQuery);
+        const allPosts = postList;
+        console.log(allPosts);
+       
         setSearched(true);
 
         let results = [];
 
-        // for (let i = 0; i < allPosts.length; i++) {
-        for (let i = 0; i < 10; i++) {
-            // const compareStr = allPosts[i][title];
-            const compareStr = "creating a club for students";
-    
+        allPosts.forEach(post =>  {
+            const compareStr = post.Title;
+            console.log(compareStr);
+
+            
             const endpoint = `https://api.dandelion.eu/datatxt/sim/v1/?text1=${userQuery}&text2=${compareStr}&token=${DandelionAPI}`;
             fetch(endpoint).then(response => response.json()).then(data => {
                 const similarity = data.similarity; // Assuming 'similarity' is the key in the response JSON object
-
-                results.push({"title": "tempTitle", "id": "tempID", "simScore": similarity});
-                //results.push({"title": allPosts[i][title], "id": allPosts[i][id], "simScore": similarity});
+                const temp = {"title": post.Title, "id": post.ID, "simScore": similarity};
+                results.push(temp);
+                console.log(temp);
             })
-        }
+        });
 
-        // results.sort((a, b) => {
-        //     return a[simScore] - b[simScore];
-        // });
+        // console.log(results);
+            
+        results.sort((a, b) => {
+            return a.simScore - b.simScore;
+        });
         setQueryRes(results);
-    };
+    }
+
     const fetchData = async () => {
 
         const postsRef = collection(firestore, "forumPosts");
@@ -140,8 +144,6 @@ const QuestionForum = () => {
             const res = doc.data();
             setPostID(doc.id);
             setPostTitle(res.title);
-            console.log(doc.id,res.title)
-            console.log(postID,postTitle)
 
             const dict = {
                 "ID": doc.id,
@@ -151,6 +153,8 @@ const QuestionForum = () => {
             postList.push(dict);
         });
     };
+
+
     return (
         <>
             <Navbar />

@@ -1,8 +1,9 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import {useNavigate} from "react-router-dom";
 import "./Navbar.css"
 import {onAuthStateChanged } from "firebase/auth"
 import { auth } from '../firebase';
+
 
 const Navbar = () => {
     const navigate = useNavigate();
@@ -14,6 +15,7 @@ const Navbar = () => {
         eventSchedule: false,
         donateToWilson: false
     });
+    const [dispName, setDispName] = useState("");
 
     const navigationFunction = (_page) => {
         console.log(_page)
@@ -92,6 +94,14 @@ const Navbar = () => {
         }));
     };
 
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setDispName(user.displayName)
+            }
+        })
+    }, []);
+
     return (
         <nav className="navbar navbar-expand-lg NVB-bg-color">
             <div className="container-fluid">
@@ -127,6 +137,12 @@ const Navbar = () => {
                     <a className="nav-link NVB-text-color"   aria-disabled="true" style={navItemStyles.donateToWilson} onMouseEnter={() => handleNavItemHover('donateToWilson')} onMouseLeave={() => handleNavItemMouseLeave('donateToWilson')}
                         onClick={() => {navigationFunction("/myaccount")}}>
                         My Account
+                    </a>
+                    </li>
+
+                    <li className="nav-item">
+                    <a className="nav-link NVB-text-color NVB-welcome" aria-current="page" style={navItemStyles.informationHub} onMouseEnter={() => handleNavItemHover('informationHub')} onMouseLeave={() => handleNavItemMouseLeave('informationHub')}>
+                        Welcome, {dispName}
                     </a>
                     </li>
 
