@@ -14,7 +14,7 @@
 
 .LI-title-container {
     position: absolute;
-    top: 30%;
+    top: 32%;
     width: 70%;
     left: 52.5%;
     transform: translate(-50%, -50%);
@@ -24,28 +24,28 @@
     font-family: 'Montserrat';
     font-size: 400%;
     font-weight: bold;
-    color: white;
+    color: #A0FFDD;
 }
 
 .LI-email-box {
     position: absolute;
     top: 45%;
-    left: 50%;
-    width: 25%;
+    left: 60%;
+    width: 70%;
     transform: translate(-50%, -50%);
 }
 
 .LI-password-box{
     position: absolute;
     top: 55%;
-    left: 50%;
-    width: 25%;
+    left: 60%;
+    width: 70%;
     transform: translate(-50%, -50%);
 }
 
 .LI-login-btn {
     position: absolute;
-    top: 70%;
+    top: 67%;
     left: 50%;
     width: 20%;
     font-size: 200%;
@@ -57,4 +57,48 @@
 .LI-login-btn:hover {
     color: #A0FFDD;
     background-color: darksalmon;
+}
+
+.LI-create-account-btn {
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    width: 10%;
+    font-size: 90%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-decoration: underline;
+}
+
+.LI-create-account-btn:hover {
+    color: #A0FFDD;
+}
+
+.LI-alert-container {
+    position: absolute;
+    top: -100%;
+    left: 50%;
+    width: 20%;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    background-color: red;
+    animation: LIslideIn 0.5s forwards; /* Apply the animation */
+}   
+
+@keyframes LIslideIn {
+    from {
+        top: -100%;
+    }
+    to {
+        top: 19%;
+    }
+}
+
+.LI-alert {
+    font-family: 'Montserrat';
+    font-size: 100%;
+    font-weight: bold;
+    color: white;
 }

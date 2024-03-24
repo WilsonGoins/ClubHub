@@ -10,6 +10,11 @@ const CreateAccount = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [loginError, setLoginError] = useState({
+        userError: false,
+        passwordError: false,
+        emailError: false,
+    });
     const navigate = useNavigate();
 
     const handleCreateAccount = async (event) => {
@@ -29,9 +34,43 @@ const CreateAccount = () => {
                 navigate("/login");
             } catch (error) {
                 console.error("Error creating user:", error.message);
+                setLoginError(prevState => ({
+                    ...prevState,
+                    emailError: true
+                }));
             }
         } else {
             console.log("Invalid input");
+        }
+    };
+
+    const errorMessage = () => {
+        if(loginError.userError){
+            loginError.userError = false;
+            return (
+                <div className="CA-alert-container">
+                        <div className="CA-alert">Invalid name format.<br />Please try again.</div>
+                </div>
+            );
+        }
+        else if(loginError.emailError){
+            loginError.userError = false;
+            return (
+                <div className="CA-alert-container">
+                        <div className="CA-alert">Email already has an account.<br />Please try again.</div>
+                </div>
+            );
+        }
+        else if(loginError.passwordError){
+            loginError.userError = false;
+            return (
+                <div className="CA-alert-container">
+                        <div className="CA-alert">Invalid password format.<br />Please try again.</div>
+                </div>
+            );
+        }
+        else{
+            return null;
         }
     };
 
@@ -42,21 +81,37 @@ const CreateAccount = () => {
 
         if (!nameRegex.test(name)) {
             console.error("Invalid name format");
+            setLoginError(prevState => ({
+                ...prevState,
+                userError: true
+            }));
             return false;
         }
 
         if (!emailRegex.test(email)) {
             console.error("Invalid email format");
+            setLoginError(prevState => ({
+                ...prevState,
+                emailError: true
+            }));
             return false;
         }
 
         if (!passwordRegex.test(password)) {
             console.error("Invalid password format");
+            setLoginError(prevState => ({
+                ...prevState,
+                passwordError: true
+            }));
             return false;
         }
 
         return true;
     };
+
+    const GoToLogin = () => {
+        navigate("/login")
+    }
 
     return (
         <>
@@ -118,11 +173,19 @@ const CreateAccount = () => {
                     </div>
                 </div>
 
+                {/* Error message */}
+                {errorMessage()}
+
                 {/* create account button */}
                 <button type="submit" className="btn btn-lg NVB-bg-color CA-create-btn">
                     Create Account
                 </button>
             </form>
+
+            <div>
+                <button type="submit" className="btn btn-lg NVM-bg-color CA-login-btn" onClick={GoToLogin}>Login</button>
+            </div>
+
         </>
     )
 }

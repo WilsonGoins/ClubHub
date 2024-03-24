@@ -5,7 +5,7 @@
 
 .CA-title-container {
     position: absolute;
-    top: 37.5%;
+    top: 27.5%;
     left: 60%;
     width: 60%;
     transform: translate(-60%, -50%);   
@@ -15,26 +15,26 @@
     font-family: 'Montserrat';
     font-size: 400%;
     font-weight: bold;
-    color: white;
+    color: #A0FFDD;
 }
 
 .CA-name-text {
     position: absolute;
     left: 30%;
-    top: 50%;
+    top: 40%;
 }
 
 .CA-email-text {
     position: absolute;
     left: 30%;
-    top: 60%;
+    top: 50%;
 
 }
 
 .CA-password-text {
     position: absolute;
     left: 30%;
-    top: 70%; 
+    top: 60%; 
 }
 
 .CA-help-text {
@@ -43,10 +43,10 @@
 
 .CA-create-btn {
     position: absolute;
-    top: 85%;
+    top: 75%;
     left: 50%;
     width: 20%;
-    font-size: 125%;
+    font-size: 200%;
     color: white;
     transform: translate(-50%, -50%);
 }
@@ -54,4 +54,48 @@
 .CA-create-btn:hover {
     color: #A0FFDD;
     background-color: darksalmon;
+}
+
+.CA-login-btn {
+    position: absolute;
+    top: 83%;
+    left: 50%;
+    width: 10%;
+    font-size: 90%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-decoration: underline;
+}
+
+.CA-login-btn:hover {
+    color: #A0FFDD;
+}
+
+.CA-alert-container {
+    position: absolute;
+    top: -100%;
+    left: 50%;
+    width: 20%;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    background-color: red;
+    animation: CAslideIn 0.5s forwards;
+}   
+
+@keyframes CAslideIn {
+    from {
+        top: -100%;
+    }
+    to {
+        top: 16.5%;
+    }
+}
+
+.CA-alert {
+    font-family: 'Montserrat';
+    font-size: 100%;
+    font-weight: bold;
+    color: white;
 }

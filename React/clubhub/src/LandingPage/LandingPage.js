@@ -44,11 +44,6 @@ const LandingPage = () => {
             <div>
                 <button type="button" class="btn btn-lg NVB-bg-color LP-create-btn" onClick={GoToCreateAccount}>Create Account</button>
             </div>
-
-            {/* learn more */}
-            <div>
-                <button type="button" class="btn btn-lg NVB-bg-color LP-learn-btn">Learn More</button>
-            </div>
         </div>
     )
 }
