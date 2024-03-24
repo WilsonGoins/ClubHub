@@ -16,10 +16,12 @@ const MyAccount = () => {
         console.log(data.name);
     }
 
-    const AddClub = async () => { // TODO: write to backend
+    const AddClub = async () => {
         try {
             const newClub = await findClub(clubToAdd)
             await addClub(email, newClub);
+            navigate("/myaccount");
+            fetchData(email);
         } catch (error) {
             console.error("Error found: ", error);
             navigate("/newclubinfo");
@@ -39,7 +41,7 @@ const MyAccount = () => {
             }
         })
         if (clubToAdd != "") {
-
+            
         }
     }, []);
 

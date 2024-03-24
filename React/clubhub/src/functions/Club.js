@@ -15,13 +15,15 @@ const createClub = async () => {
     }
 }
 
-const initializeClub = async (name, bio, userID) => {
+const initializeClub = async (name, bio, pres, vicepres, treasure) => {
     try {
         const clubsRef = fs.collection(firestore, "clubs");
         await fs.addDoc(clubsRef, {
             name: name,
             bio: bio,
-            admins: fs.arrayUnion(userID)
+            president: pres,
+            vicepresident: vicepres,
+            treasurer: treasure
         })
     } catch (error) {
         console.error("Unexpected error in initializeClub: ", error);
