@@ -20,6 +20,8 @@ const MyAccount = () => {
         try {
             const newClub = await findClub(clubToAdd)
             await addClub(email, newClub);
+            navigate("/myaccount");
+            fetchData(email);
         } catch (error) {
             console.error("Error found: ", error);
             navigate("/newclubinfo");
@@ -39,7 +41,7 @@ const MyAccount = () => {
             }
         })
         if (clubToAdd != "") {
-
+            
         }
     }, []);
 

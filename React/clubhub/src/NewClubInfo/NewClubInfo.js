@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import Navbar from "../Navbar/Navbar"
 import "./NewClubInfo.css"
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { initializeClub } from "../functions/Club";
 
 
 const NewClubInfo = () => {
@@ -32,8 +33,7 @@ const NewClubInfo = () => {
     };
 
     const CreateClub = () => {
-        // TODO: write to backend
-
+        initializeClub(clubName, description, president, vicePresident, treasurer);
         navigate("/home")
     }
 
