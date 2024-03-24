@@ -82,34 +82,6 @@ const PostPage = () => {
                     Post By: {postUser}
                 </div>
             </div>
-
-            <div className="PP-comment-section-container">
-                <div className="PP-comment-title-text">
-                    Comments:
-                </div>
-                <div className="PP-comment-container">
-                    Nick Says:
-                    <br />
-                    WOmen? NeV3r heArD oV3r.
-                </div>
-                <div className="PP-comment-container">
-                    Jake Says:
-                    <br />
-                    Crazy? I was crazy once. They locked me in a room. A rubber room. A rubber room with rats. And rats make my crazy. Crazy? I was crazy once. They locked me in a room. A rubber room. A rubber room with rats. And rats make my crazy. Crazy? I was crazy once. They locked me in a room. A rubber room. A rubber room with rats. And rats make my crazy. Crazy? I was crazy once. They locked me in a room. A rubber room. A rubber room with rats. And rats make my crazy. Crazy? I was crazy once. They locked me in a room. A rubber room. A rubber room with rats. And rats make my crazy. Crazy? I was crazy once. They locked me in a room. A rubber room. A rubber room with rats. And rats make my crazy.
-                </div>
-                <div className="PP-comment-container">
-                    Wilson Says:
-                    <br />
-                    Okay Guys.
-                </div>
-                <div className="PP-comment-container">
-                    Eddy Says:
-                    <br />
-                    Poggers!
-                </div>
-                <br />
-                <br />
-            </div>
         </div>
     )
 }

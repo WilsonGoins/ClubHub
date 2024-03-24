@@ -1,9 +1,8 @@
-import React, {useState, useEffect} from "react"
-import {useNavigate} from "react-router-dom";
-import "./Navbar.css"
-import {onAuthStateChanged } from "firebase/auth"
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import "./Navbar.css";
+import { onAuthStateChanged } from "firebase/auth";
 import { auth } from '../firebase';
-
 
 const Navbar = () => {
     const navigate = useNavigate();
@@ -20,26 +19,26 @@ const Navbar = () => {
     const navigationFunction = (_page) => {
         console.log(_page)
         console.log(localStorage.getItem('LoggedIn'))
-        if (_page === "/home") {      // different if block because this is for clicking "ClubHub" which should go back to landing page
-                console.log(_page)
+        if (_page === "/home") { // different if block because this is for clicking "ClubHub" which should go back to landing page
+            console.log(_page)
             if (localStorage.getItem('LoggedIn') === 'true') {
-                    navigate("/home");
-                } else {
-                    navigate("/");
-                }
+                navigate("/home");
+            } else {
+                navigate("/");
             }
+        }
         else {
             console.log('not /home')
             console.log(_page)
             console.log(localStorage.getItem('LoggedIn'))
             if (localStorage.getItem('LoggedIn') == "true") {
-                    navigate(_page);
+                navigate(_page);
             } else {
-                    console.log("hello");
-                    navigate("/createaccount");
-                }
+                console.log("hello");
+                navigate("/createaccount");
             }
         }
+    }
 
     const searchButtonStyle = {
         backgroundColor: searchHovered ? '#A0FFDD' : '#E9967A',
@@ -110,46 +109,39 @@ const Navbar = () => {
                     ClubHub
                 </a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon"></span>
+                    <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li className="nav-item">
-                    <a className="nav-link NVB-text-color" aria-current="page" style={navItemStyles.informationHub} onMouseEnter={() => handleNavItemHover('informationHub')} onMouseLeave={() => handleNavItemMouseLeave('informationHub')}
-                        onClick={() => {navigationFunction("/informationhub")}}>
-                        Information Hub
-                    </a>
-                    </li>
-                    <li className="nav-item">
-                    <a className="nav-link NVB-text-color" style={navItemStyles.questionForum} onMouseEnter={() => handleNavItemHover('questionForum')} onMouseLeave={() => handleNavItemMouseLeave('questionForum')}
-                        onClick={() => {navigationFunction("/questionforum")}}>
-                        Question Forums
-                    </a>
-                    </li>
-                    <li className="nav-item">
-                    <a className="nav-link NVB-text-color" aria-disabled="true" style={navItemStyles.eventSchedule} onMouseEnter={() => handleNavItemHover('eventSchedule')} onMouseLeave={() => handleNavItemMouseLeave('eventSchedule')}
-                        onClick={() => {navigationFunction("/clubfinder")}}>
-                        Find Clubs
-                    </a>
-                    </li>
+                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li className="nav-item">
+                            <a className="nav-link NVB-text-color" aria-current="page" style={navItemStyles.informationHub} onMouseEnter={() => handleNavItemHover('informationHub')} onMouseLeave={() => handleNavItemMouseLeave('informationHub')}
+                                onClick={() => { navigationFunction("/informationhub") }}>
+                                Information Hub
+                            </a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link NVB-text-color" style={navItemStyles.questionForum} onMouseEnter={() => handleNavItemHover('questionForum')} onMouseLeave={() => handleNavItemMouseLeave('questionForum')}
+                                onClick={() => { navigationFunction("/questionforum") }}>
+                                Question Forums
+                            </a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link NVB-text-color" aria-disabled="true" style={navItemStyles.eventSchedule} onMouseEnter={() => handleNavItemHover('eventSchedule')} onMouseLeave={() => handleNavItemMouseLeave('eventSchedule')}
+                                onClick={() => { navigationFunction("/clubfinder") }}>
+                                Find Clubs
+                            </a>
+                        </li>
 
-                    <li className="nav-item">
-                    <a className="nav-link NVB-text-color"   aria-disabled="true" style={navItemStyles.donateToWilson} onMouseEnter={() => handleNavItemHover('donateToWilson')} onMouseLeave={() => handleNavItemMouseLeave('donateToWilson')}
-                        onClick={() => {navigationFunction("/myaccount")}}>
-                        My Account
-                    </a>
-                    </li>
-
-                    <li className="nav-item">
-                    <a className="nav-link NVB-text-color NVB-welcome" aria-current="page" style={navItemStyles.informationHub} onMouseEnter={() => handleNavItemHover('informationHub')} onMouseLeave={() => handleNavItemMouseLeave('informationHub')}>
-                        Welcome, {dispName}
-                    </a>
-                    </li>
-
-                </ul>
+                        <li className="nav-item">
+                            <a className="nav-link NVB-text-color" aria-disabled="true" style={navItemStyles.donateToWilson} onMouseEnter={() => handleNavItemHover('donateToWilson')} onMouseLeave={() => handleNavItemMouseLeave('donateToWilson')}
+                                onClick={() => { navigationFunction("/myaccount") }}>
+                                My Account: {dispName}
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
     )
 }
-export default Navbar
+export default Navbar;
