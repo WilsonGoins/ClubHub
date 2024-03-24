@@ -51,6 +51,7 @@ const ClubFinder = () => {
                     </div>
 
                     <div className="CF-clubs-container">
+                        <div style={{marginTop: "60%"}}></div>
                         {clubsRes.map((club, name) => (
                             <div key={club}>
                                 <button className="CF-clubs-button btn btn-outline-success NVB-text-color" style={navItemStyles}
@@ -63,6 +64,8 @@ const ClubFinder = () => {
                         <div className="CF-new-club-txt" onClick={() => {navigate("/newclubinfo")}}>
                    
                             Can't find an org? Help us out by adding it here!
+                            <br />
+                            <br />
                         </div>
 
                     </div>
