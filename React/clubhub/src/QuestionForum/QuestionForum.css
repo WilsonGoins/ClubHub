@@ -1,0 +1,26 @@
+.QF-bg {
+    background-color: #5bd1a8;
+    height: 300vh;
+}
+
+.QF-title-container {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.QF-title-text {
+    font-family: 'Montserrat';
+    font-size: 400%;
+    font-weight: bold;
+    color: white;
+}
+
+.QF-search-bar {
+    position: absolute;
+    width: 50%;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

@@ -1,0 +1,19 @@
+.ES-bg {
+    background-color: #5bd1a8;
+    height: 300vh;
+}
+
+.ES-title-container {
+    position: absolute;
+    top: 20%;
+    left: 55%;
+    width: 70%;
+    transform: translate(-50%, -50%);
+}
+
+.ES-title-text {
+    font-family: 'Montserrat';
+    font-size: 400%;
+    font-weight: bold;
+    color: white;
+}

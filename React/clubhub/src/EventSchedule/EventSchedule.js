@@ -13,11 +13,11 @@ const EventSchedule = () => {
     }, []);
 
     return (
-        <div>
+        <div className="ES-bg">
             <Navbar />
 
-            <div className="LP-title-container">
-                <div className="LP-title-text">
+            <div className="ES-title-container">
+                <div className="ES-title-text">
                    Welcome to Event Schedule
                 </div>
             </div>
