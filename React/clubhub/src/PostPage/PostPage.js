@@ -2,9 +2,14 @@ import React, { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import Navbar from "../Navbar/Navbar"
 import "./PostPage.css"
+import { initializePost } from "../functions/Post"
+import { collection, query, where, orderBy, getDocs, forumPosts } from "firebase/firestore";
+import { firestore } from '../firebase';
+
 
 const PostPage = () => {
     const [searchHovered, setSearchHovered] = useState(false);
+    const [userQuery, setUserQuery] = useState("");
     const [postUser, setPostUser] = useState("");
     const [postForum, setPostForum] = useState("");
     const [postTitle, setPostTitle] = useState("");
@@ -14,7 +19,7 @@ const PostPage = () => {
         borderColor: searchHovered ? '#A0FFDD' : '#A0FFDD',
         color: searchHovered ? '#E9967A' : '#FFFFFF',
         transition: 'background-color 0.3s, border-color 0.3s, color 0.3s'
-    }   
+    }
 
     const handleSearchHover = () => {
         setSearchHovered(true);
@@ -24,35 +29,37 @@ const PostPage = () => {
         setSearchHovered(false);
     };
 
-    const getPostTitle = () => {
-        const title = "Example Post"
-        setPostTitle(title);
-    };
-    const getPostForum = () => {
-        const forum = "Announcement"
-        setPostForum(forum);
-    };
-    const getPostUser = () => {
-        const user = "xX_Lazzy_Xx"
-        setPostUser(user);
-    };
-    const getPostText = () => {
-        const text = "This is an example post. Reading this won't get you much information, and reading it again you'll notice that no question is asked. This is intention. This post has no purpose other than being a placeholder of users' beautiful words. This is an example post. Reading this won't get you much information, and reading it again you'll notice that no question is asked. This is intention. This post has no purpose other than being a placeholder of users' beautiful words. This is an example post. Reading this won't get you much information, and reading it again you'll notice that no question is asked. This is intention. This post has no purpose other than being a placeholder of users' beautiful words. This is an example post. Reading this won't get you much information, and reading it again you'll notice that no question is asked. This is intention. This post has no purpose other than being a placeholder of users' beautiful words. This is an example post. Reading this won't get you much information, and reading it again you'll notice that no question is asked. This is intention. This post has no purpose other than being a placeholder of users' beautiful words. This is an example post. Reading this won't get you much information, and reading it again you'll notice that no question is asked. This is intention. This post has no purpose other than being a placeholder of users' beautiful words. This is an example post. Reading this won't get you much information, and reading it again you'll notice that no question is asked. This is intention. This post has no purpose other than being a placeholder of users' beautiful words."
-        setPostText(text);
-    };
-    useEffect(() => {
-        getPostTitle();
-        getPostForum();
-        getPostUser();
-        getPostText();
-    }, []);
+
+    const fetchData = async (event, targetName) => {
+        event.preventDefault();
+
+
+        const postsRef = collection(firestore, "forumPosts");
+        let q = query(postsRef);
+
+
+        q = query(q, where("text", "==", targetName));
+
+        const querySnapshot = await getDocs(q);
+
+        querySnapshot.forEach((doc) => {
+            console.log(doc.data());
+            const res = doc.data();
+            setPostUser(res.author);
+            setPostText(res.text);
+            setPostForum(res.board);
+            setPostTitle(res.title);
+        });
+    }
+
 
     return (
-        <div> 
+
+        <div>
             <Navbar/>
-        
-            <form class="d-flex PP-search-bar" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search for another post" aria-label="Search" />
+            <form class="d-flex PP-search-bar" role="search" onSubmit={(event) => {fetchData(event, userQuery)}}>
+                <input class="form-control me-2" type="search" placeholder="Search for another post" aria-label="Search"
+                    onChange={(event) => {setUserQuery(event.target.value)}} value={userQuery}/>
                 <button class="btn btn-outline-success  NVB-text-color" type="submit" style={navItemStyle} onMouseEnter={handleSearchHover} onMouseLeave={handleSearchMouseLeave}>Search</button>
             </form>
 
