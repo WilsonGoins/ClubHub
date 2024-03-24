@@ -21,7 +21,6 @@ const QuestionForum = () => {
     });
     const [userQuery, setUserQuery] = useState("")
     const [queryRes, setQueryRes] = useState([]);
-    const [simScore, setSimScore] = useState(0.0);
     const testArray = [
         { title: "OSC", /* other properties */ },
         { title: "SASE", /* other properties */ },
@@ -102,29 +101,27 @@ const QuestionForum = () => {
         event.preventDefault();
 
         setSearched(true);
-        const myStr = "how to make a student organization";
-        const sampleStr = "cresating a club for students";
-        const _simScore = 0.0;
 
-        const endpoint = `https://api.dandelion.eu/datatxt/sim/v1/?text1=${myStr}&text2=${sampleStr}&token=${DandelionAPI}`;
-        fetch(endpoint).then(response => response.json()).then(data => {
-            const similarity = data.similarity; // Assuming 'similarity' is the key in the response JSON object
-            setSimScore(similarity);
-        })
+        let results = [];
 
-        // console.log(response);
-        // console.log(response.body.similarity);
+        // for (let i = 0; i < allPosts.length; i++) {
+        for (let i = 0; i < 10; i++) {
+            // const compareStr = allPosts[i][title];
+            const compareStr = "creating a club for students";
+    
+            const endpoint = `https://api.dandelion.eu/datatxt/sim/v1/?text1=${userQuery}&text2=${compareStr}&token=${DandelionAPI}`;
+            fetch(endpoint).then(response => response.json()).then(data => {
+                const similarity = data.similarity; // Assuming 'similarity' is the key in the response JSON object
 
-        // setSimScore(response.similarity);
-        
-        // const similarities = [];
-        // const database = [];
-        // database.forEach(title => {             // TODO: Jake needs to fix this so it accessed database correctly
-        //     const similarityScore = new Levenshtein(userQuery.toLowerCase(), title.toLowerCase()).distance;
-        //     similarities.push({ title, similarityScore });
+                results.push({"title": "tempTitle", "id": "tempID", "simScore": similarity});
+                //results.push({"title": allPosts[i][title], "id": allPosts[i][id], "simScore": similarity});
+            })
+        }
+
+        // results.sort((a, b) => {
+        //     return a[simScore] - b[simScore];
         // });
-        // similarities.sort((a, b) => a.similarityScore - b.similarityScore);
-        // setQueryRes(similarities);
+        setQueryRes(results);
     };
 
     return (
@@ -133,7 +130,12 @@ const QuestionForum = () => {
 
             {/* search bar */}
             <form className="QF-search-bar d-flex" role="search" onSubmit={(event) => {getResults(event)}}>
-                <input className="form-control me-2" type="search" placeholder="Search for a Post" aria-label="Search" onChange={(event) => {setUserQuery(event.target.value)}} value={userQuery} />
+                <input className="form-control me-2" type="search" placeholder="Search for a Post" aria-label="Search" onChange={(event) => {setUserQuery(event.target.value)}} value={userQuery}
+                     onInput={(event) => {
+                        if (event.target.value === '') {
+                            setSearched(false);
+                        }
+                    }} />
                 <button className="btn btn-outline-success  NVB-text-color" style={navItemStyles.search} onMouseEnter={() => handleNavItemHover('search')} onMouseLeave={() => handleNavItemMouseLeave('search')} type="submit">
                     Search
                 </button>
@@ -202,15 +204,16 @@ const QuestionForum = () => {
                     </div>
 
                     <div className="QF-results-container">
-                        {queryRes.slice(0, 5).map((result, index) => (
+                        {queryRes.slice(0, 10).map((item, index) => (
                             <div key={index}>
                                 <button className="QF-results-forums btn btn-outline-success NVB-text-color" style={navItemStyles.opportunities}
-                                    onClick={() => {navigate("/createpost")}}>
-                                    <p>{result.title}</p>
+                                    onClick={() => {navigate("/post")}}>
+                                    {item.title}
                                 </button>
                             </div>
                         ))}
                     </div>
+                
 
                 </>
             )}

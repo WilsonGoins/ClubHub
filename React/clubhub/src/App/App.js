@@ -25,8 +25,7 @@ function App() {
                 <Route path="/login" exact element={<LogIn />} />
                 <Route path="/informationhub" exact element={<InformationHub />} />
                 <Route path="/test" exact element={<Test />} />
-                <Route path="/questionforum" exact element={< QuestionForum/>} />
-                <Route path="/eventschedule" exact element={<EventSchedule />} />
+                <Route path="/questionforum" exact element={< QuestionForum/>} />       
                 <Route path="/post" exact element={<PostPage />} />
                 <Route path="/createpost" exact element={<CreatePost />} />
                 <Route path="/myaccount" exact element={<MyAccount />} />

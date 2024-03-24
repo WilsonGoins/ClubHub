@@ -118,8 +118,8 @@ const Navbar = () => {
                     </li>
                     <li className="nav-item">
                     <a className="nav-link NVB-text-color" aria-disabled="true" style={navItemStyles.eventSchedule} onMouseEnter={() => handleNavItemHover('eventSchedule')} onMouseLeave={() => handleNavItemMouseLeave('eventSchedule')}
-                        onClick={() => {navigationFunction("/eventschedule")}}>
-                        Event Schedule
+                        onClick={() => {navigationFunction("/clubfinder")}}>
+                        Find Clubs
                     </a>
                     </li>
 

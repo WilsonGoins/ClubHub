@@ -11,13 +11,14 @@ const MyAccount = () => {
 
     const fetchData = async (targetEmail) => {
         const data = await retrieveUserProfile(targetEmail);
-        setList(data.clubs);
+        setClubList([]);
+        // setClubList(data.clubs);
         console.log(data.name);
     }
 
     useEffect(() => {
         console.log("effect");
-        if (!true) {     // TODO: check if they are NOT logged in                                IMPORTANT
+        if (!true) {     // TODO: check if they are NOT logged in   IMPORTANT
             navigate("/")
         }
         onAuthStateChanged(auth, (user) => {
@@ -34,10 +35,11 @@ const MyAccount = () => {
     const [clubToAdd, setClubToAdd] = useState("");
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
-    const [clubList, setList] = useState([]);     // TODO: get club list from database
+    const [clubList, setClubList] = useState([]);     
 
     const AddClub = () => { // TODO: write to backend
         console.log(clubToAdd);
+        navigate("/newclubinfo");
     }
 
     const searchButtonStyle = {
@@ -46,8 +48,6 @@ const MyAccount = () => {
         color: searchHovered ? '#E9967A' : '#FFFFFF',
         transition: 'background-color 0.3s, border-color 0.3s, color 0.3s'
     };
-
-    
 
     const handleSearchHover = () => {
         setSearchHovered(true);
@@ -89,14 +89,16 @@ const MyAccount = () => {
             {/* clubs */}
             <div className="MA-club-container">
                 <div className="MA-title-text">
-                    My Clubs
+                    My Clubs:
                 </div>
 
-                <ul>
-                    {clubList.map((item, index) => (
-                        <li key={index} className="MA-club-text" onClick={() => {navigate(item)}}>{item}</li>
-                    ))}
-                </ul>
+                {clubList && (
+                    <ul>
+                        {clubList.map((item, index) => (
+                            <li key={index} className="MA-club-text" onClick={() => {navigate(item)}}>{item}</li>
+                        ))}
+                    </ul>
+                )}
             </div>
 
             {/* add a club */}
