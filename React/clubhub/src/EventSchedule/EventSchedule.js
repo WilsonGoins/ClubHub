@@ -11,12 +11,9 @@ const EventSchedule = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        onAuthStateChanged(auth, user => {
-            console.log(user)
-            if (!user) {
-                navigate("/")
-            }
-        })
+        if (localStorage.getItem('LoggedIn') === "false") {     // TODO: check if they are NOT logged in                                IMPORTANT
+            navigate("/")
+        }
     }, []);
 
     return (
