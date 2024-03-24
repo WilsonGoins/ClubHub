@@ -10,6 +10,7 @@ import EventSchedule from '../EventSchedule/EventSchedule';
 import QuestionForum from '../QuestionForum/QuestionForum';
 import PostPage from "../PostPage/PostPage"
 import CreatePost from '../CreatePost/CreatePost';
+import MyAccount from '../MyAccount/MyAccount';
 
 
 function App() {
@@ -26,8 +27,8 @@ function App() {
                 <Route path="/eventschedule" exact element={<EventSchedule />} />
                 <Route path="/post" exact element={<PostPage />} />
                 <Route path="/createpost" exact element={<CreatePost />} />
-
-                
+                <Route path="/myaccount" exact element={<MyAccount />} />
+        
             </Routes>
         </BrowserRouter>
     );

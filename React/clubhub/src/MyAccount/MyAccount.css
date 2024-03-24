@@ -1,0 +1,67 @@
+.MA-title-container {
+    position: absolute;
+    left: 3%;
+    top: 7%;
+}
+
+.MA-title-text {
+    font-family: 'Montserrat';
+    font-size: 400%;
+    font-weight: bold;
+    color: antiquewhite;
+}
+
+.MA-image {
+    position: absolute;
+    left: 3%;
+    top: 20%;
+    height: 50%;
+}
+
+.MA-name-container {
+    position: absolute;
+    left: 40%;
+    top: 25%;
+}
+
+.MA-name-text {
+    font-family: 'Montserrat';
+    font-size: 400%;
+    color: white;
+    font-weight: bold;
+}
+
+.MA-email-container {
+    position: absolute;
+    left: 40%;
+    top: 37.5%;
+}
+
+.MA-club-container {
+    position: absolute;
+    left: 40%;
+    top: 50%;
+    width: 60%;
+}
+
+.MA-club-text {
+    font-family: 'Montserrat';
+    font-size: 350%;
+    color: white;
+    font-weight: bold;
+    margin-left: 7.5%;
+    cursor: pointer;
+}
+
+.MA-add-club-container {
+    position: absolute;
+    left: 3%;
+    top: 70%;
+}
+
+.MA-add-club-btn {
+    position: absolute;
+    top: 90%;
+    left: 11%;
+    font-size: 150%;
+}

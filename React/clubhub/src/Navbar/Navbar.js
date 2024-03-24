@@ -49,7 +49,8 @@ const Navbar = () => {
     const navItemStyles = {
         clubHub: {
             color: navItemHovered.clubHub ? '#A0FFDD' : '#FFFFFF',
-            transition: 'color 0.3s'
+            transition: 'color 0.3s',
+            marginLeft: "35px",
         },
         informationHub: {
             color: navItemHovered.informationHub ? '#A0FFDD' : '#FFFFFF',
@@ -121,17 +122,12 @@ const Navbar = () => {
                         Event Schedule
                     </a>
                     </li>
-                    <li className="nav-item dropdown">
-                    <a className="nav-link dropdown-toggle NVB-text-color"  role="button" data-bs-toggle="dropdown" aria-expanded="false" style={navItemStyles.donateToWilson} onMouseEnter={() => handleNavItemHover('donateToWilson')} onMouseLeave={() => handleNavItemMouseLeave('donateToWilson')}
-                        onClick={() => {navigationFunction("/#")}}>
-                        Donate to Wilson
+
+                    <li className="nav-item">
+                    <a className="nav-link NVB-text-color"   aria-disabled="true" style={navItemStyles.donateToWilson} onMouseEnter={() => handleNavItemHover('donateToWilson')} onMouseLeave={() => handleNavItemMouseLeave('donateToWilson')}
+                        onClick={() => {navigationFunction("/myaccount")}}>
+                        My Account
                     </a>
-                    <ul className="dropdown-menu">
-                        <li><a className="dropdown-item" href="#">Give Kisses</a></li>
-                        <li><a className="dropdown-item" href="#">Give Money</a></li>
-                        <li><hr className="dropdown-divider" /></li>
-                        <li><a className="dropdown-item" href="#">Give Praise and Admiration</a></li>
-                    </ul>
                     </li>
 
                 </ul>
