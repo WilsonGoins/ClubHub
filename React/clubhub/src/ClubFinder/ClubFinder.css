@@ -1,7 +1,7 @@
 .CF-title-container {
     position: absolute;
     width: 50%;
-    top: 20%;
+    top: 18%;
     left: 50%;
     font-size: 350%;
     text-align: center;
@@ -33,4 +33,42 @@
     font-size: 150%;
     transform: translate(-50%, -50%);
 }
+
+.CF-club-role-text {
+    font-family: 'Montserrat';
+    font-size: 250%;
+    font-weight: bold;
+    color: white;
+}
+
+.CF-textbox-roles {
+    position: absolute;
+    text-align: center;
+    top: 27%;
+    left: 3%;
+    border-radius: 10px;
+    padding: 50px;
+    background-color: darksalmon;
+}
+
+.CF-textbox-description {
+    position: absolute;
+    text-align: center;
+    top: 27%;
+    left: 34%;
+    width: 63%;
+    border-radius: 10px;
+    padding: 50px;
+    padding-top: 40px;
+    min-height: 579px;
+    background-color: darksalmon;
+}
+
+.CF-body-text {
+    font-family: 'Montserrat';
+    font-size: 135%;
+    color: white;
+}
+
+
 
