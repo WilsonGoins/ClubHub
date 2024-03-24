@@ -5,6 +5,7 @@ import CreateAccount from "../CreateAccount/CreateAccount"
 import Home from "../Home/Home"
 import LogIn from "../LogIn/LogIn"
 import InformationHub from "../InformationHub/InformationHub"
+import Test from "../Test/Test"
 
 function App() {
     return (
@@ -15,7 +16,7 @@ function App() {
                 <Route path="/home" exact element={<Home />} />
                 <Route path="/login" exact element={<LogIn />} />
                 <Route path="/informationhub" exact element={<InformationHub />} />
-                
+                <Route path="/test" exact element={<Test />} />
             </Routes>
         </BrowserRouter>
     );

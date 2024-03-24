@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import firebase from 'firebase/app'
+import { getFirestore, collection } from 'firebase/firestore'
 
 
 // TODO: Replace the following with your app's Firebase project configuration
@@ -17,5 +18,9 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 // Initialize Firebase Authentication and get a reference to the service
 export const auth = getAuth(app);
+
+export const firestore = getFirestore(app);
+
+export const usersCollection = collection(firestore, "users");
 
 export default app
