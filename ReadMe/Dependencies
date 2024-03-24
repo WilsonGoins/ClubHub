@@ -4,6 +4,5 @@ This is the ReadMe for dependencies to install:
    "cd React/clubhub"
    "npm install"
    "npm install react-router-dom"
-2. In a different terminal run:
-   "cd Firebase"
    "npm install Firebase"
+

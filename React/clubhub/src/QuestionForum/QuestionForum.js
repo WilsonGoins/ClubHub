@@ -127,11 +127,6 @@ const QuestionForum = () => {
                     results.push({"title": post.Title, "id": post.ID, "simScore": similarity});
                 }
             })
-            // .then(response => response.json()).then(data => {
-            //     const similarity = data.similarity; // Assuming 'similarity' is the key in the response JSON object
-            //     const temp = {"title": post.Title, "id": post.ID, "simScore": similarity};
-            //     results.push(temp);
-            // })
         });
 
         console.log(results);
