@@ -31,21 +31,6 @@ const retrieveUserProfile = async (targetEmail) => {
         console.error("Unexpected error in retrieveUserProfile: ", error);
         throw new Error("Failed retrieval.");
     }
-
-    // try {
-    //     const clubsRef = fs.collection(firestore, "clubs");
-    //     const q = fs.query(clubsRef, fs.where("name", "==", targetName))
-
-    //     const snapshot = await fs.getDocs(q);
-
-    //     if (snapshot.empty) {
-    //         throw new Error("Club not found!");
-    //     }
-
-    //     return snapshot.docs[0]; // returning first item of array
-    // } catch (error) {
-    //     console.error("Unexpected error in findClub: ", error);
-    // }
 }
 
 const retrieveUserData = async (targetEmail) => {
@@ -65,4 +50,40 @@ const retrieveUserData = async (targetEmail) => {
     }
 };
 
-export { initializeUserProfile, retrieveUserProfile, retrieveUserData }
+const addClubHelper = async (targetEmail) => {
+    try {
+        const usersRef = fs.collection(firestore, "users");
+        const q = fs.query(usersRef, fs.where("email", "==", targetEmail));
+
+        const snapshot = await fs.getDocs(q);
+
+        if (snapshot.empty) {
+            throw new Error("User not found!");
+        }
+        
+        return snapshot.docs[0];
+    } catch (error) {
+        console.error("Unexpected error in retrieveUserProfile: ", error);
+        throw new Error("Failed retrieval.");
+    }
+}
+
+const addClub = async (userEmail, addedClub) => {
+    try {
+        const userData = await retrieveUserProfile(userEmail);
+        const otherUserData = await addClubHelper(userEmail);
+        const clubName = addedClub.data().name;
+        userData.clubs.push(clubName);
+
+        const userDocRef = fs.doc(firestore, "users", otherUserData.id);
+
+        console.log("cook???");
+
+        await fs.updateDoc(userDocRef, { clubs: userData.clubs });
+        
+    } catch (error) {
+        console.error("Error encountered in addClub: ", error);
+    }
+}
+
+export { initializeUserProfile, retrieveUserProfile, retrieveUserData, addClub }

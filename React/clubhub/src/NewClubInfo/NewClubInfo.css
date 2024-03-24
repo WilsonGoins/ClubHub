@@ -18,6 +18,7 @@
 .NCI-label {
     margin-left: 100px;
     margin-top: 4px;
+    font-weight: bold;
     white-space: nowrap;
     text-align: center;
 }
