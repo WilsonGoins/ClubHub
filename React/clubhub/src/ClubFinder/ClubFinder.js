@@ -51,7 +51,7 @@ const ClubFinder = () => {
                     </div>
 
                     <div className="CF-clubs-container">
-                        <div style={{marginTop: "60%"}}></div>
+                        <div style={{marginTop: "0%"}}></div>
                         {clubsRes.map((club, name) => (
                             <div key={club}>
                                 <button className="CF-clubs-button btn btn-outline-success NVB-text-color" style={navItemStyles}
