@@ -31,6 +31,7 @@ function App() {
                 <Route path="/createpost" exact element={<CreatePost />} />
                 <Route path="/myaccount" exact element={<MyAccount />} />
                 <Route path="/newclubinfo" exact element={<NewClubInfo />} />
+                <Route path="/clubfinder/" exact element={<ClubFinder />} />
                 <Route path="/clubfinder/:clubName" exact element={<ClubFinder />} />
                 
         
