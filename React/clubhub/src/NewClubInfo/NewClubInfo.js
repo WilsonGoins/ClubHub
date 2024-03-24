@@ -2,17 +2,26 @@ import React, { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import Navbar from "../Navbar/Navbar"
 import "./NewClubInfo.css"
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+
 
 const NewClubInfo = () => {
     const navigate = useNavigate();
     const [searchHovered, setSearchHovered] = useState(false);
-    const [clubList, setClubList] = useState([]);
+    const [clubList, setClubList] = useState([]);           // todo: get club list (see below)
     const [clubName, setClubName] = useState("");
     const [newClub, setNewClub] = useState(false);
     const [president, setPresident] = useState("");
     const [vicePresident, setVicePresident] = useState("");
     const [treasurer, setTreasurer] = useState("");
     const [description, setDescription] = useState("");
+    const auth = getAuth();
+
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            // todo: get list of all clubs from database, I don't think through this though
+        }
+    });
 
 
     const searchButtonStyle = {
@@ -30,11 +39,6 @@ const NewClubInfo = () => {
         if (localStorage.getItem('LoggedIn') === "false") {
             navigate("/")
         }
-        const options = [
-            {value: "OSC", label: "OSC"},
-            {value: "ACM", label: "ACM"},
-            {value: "SASE", label: "SASE"}
-        ]
     }, []);
 
     const handleSearchHover = () => {
@@ -100,7 +104,6 @@ const NewClubInfo = () => {
                 onClick={CreateClub}>
                 Create Club
             </button>
-           
         </div>
     )
 }

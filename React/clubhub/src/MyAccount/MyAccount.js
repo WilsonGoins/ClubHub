@@ -9,17 +9,18 @@ const MyAccount = () => {
     const navigate = useNavigate();
     const [searchHovered, setSearchHovered] = useState(false);
     const [clubToAdd, setClubToAdd] = useState("");
-    const [clubList, setClubList] = useState([]);
+    let clubList = [{value: "OSC", label: "OSC"},
+                    {value: "ACM", label: "ACM"},
+                    {value: "SASE", label: "SASE"}];
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
-
     const auth = getAuth();
+
     onAuthStateChanged(auth, (user) => {
         if (user) {
             setName(user.displayName);
             setEmail(user.email);
-        } else {
-            console.log("buggg");
+            // todo: get clubs
         }
     });
 
@@ -39,15 +40,9 @@ const MyAccount = () => {
     }
 
     useEffect(() => {
-        if (!true) {     // TODO: check if they are NOT logged in                                IMPORTANT
+        if (localStorage.getItem('LoggedIn') === "false") {
             navigate("/")
         }
-        const options = [                   // todo: get form backend
-            {value: "OSC", label: "OSC"},
-            {value: "ACM", label: "ACM"},
-            {value: "SASE", label: "SASE"}
-        ]
-        //setClubList(options);
     }, []);
 
     const handleSearchHover = () => {
@@ -58,7 +53,6 @@ const MyAccount = () => {
         setSearchHovered(false);
     };
     
-
 
     return (
         <div className="QF-bg">
